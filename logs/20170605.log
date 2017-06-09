@@ -1,0 +1,571 @@
+[2017-06-05 13:36:35.309] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 13:36:35.327] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 13:36:35.351] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 13:36:35.352] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 13:36:35.365] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 13:36:35.890] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 13:36:36.498] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 13:36:36.731] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-06-05 13:36:37.181] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-06-05 13:36:37.188] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-06-05 13:36:37.373] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-06-05 13:36:37.374] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-06-05 13:36:37.376] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-06-05 13:36:37.385] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-06-05 13:36:50.416] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:36:50.446] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:36:50.447] [INFO] [default] - user:[::1] open login.html
+[2017-06-05 13:36:50.590] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:36:50.597] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:36:50.603] [INFO] [default] - user:[::1] open login.html
+[2017-06-05 13:36:54.626] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:36:54.627] [INFO] [default] - user:[::1] begin to login
+[2017-06-05 13:36:54.662] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'admin' AND `User`.`password` = '202cb962ac59075b964b07152d234b70' LIMIT 1;
+[2017-06-05 13:36:54.732] [INFO] [default] - user:[admin] login success
+[2017-06-05 13:36:54.742] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:36:54.769] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J','2017-06-05 05:46:54','{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"user\":\"admin\",\"corp\":\"wx\"}','2017-06-05 05:36:54','2017-06-05 05:36:54');
+[2017-06-05 13:36:54.818] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:36:54.821] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:36:54.822] [INFO] [default] - user:[admin] open check.html
+[2017-06-05 13:36:54.843] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:46:54',`updatedAt`='2017-06-05 05:36:54' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:36:54.929] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:36:54.934] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:36:54.953] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:46:54',`updatedAt`='2017-06-05 05:36:54' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:36:56.156] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:36:56.159] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:36:56.160] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 13:36:56.163] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 13:36:56.216] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 13:36:56.240] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:46:56',`updatedAt`='2017-06-05 05:36:56' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:37:02.759] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:37:02.763] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:37:02.955] [INFO] [default] - mobile:[13621700192] msgcode:[2922]
+[2017-06-05 13:37:02.960] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:37:02.975] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:47:02',`data`='{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"user\":\"admin\",\"corp\":\"wx\",\"mobile\":\"13621700192\",\"msgcode\":2922}',`updatedAt`='2017-06-05 05:37:02' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:37:26.697] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:37:26.700] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:37:26.701] [INFO] [default] - user:[admin] mobile:[13621700192] validate msgcode fail!
+[2017-06-05 13:37:26.706] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:47:26',`updatedAt`='2017-06-05 05:37:26' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:37:48.787] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:37:48.791] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:39:50.059] [INFO] [default] - user:[admin] mobile:[13621700192] validate msgcode fail!
+[2017-06-05 13:39:50.073] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:49:50',`updatedAt`='2017-06-05 05:39:50' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:39:50.088] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:39:50'
+[2017-06-05 13:40:05.089] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:40:05.091] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:40:05.091] [INFO] [default] - user:[admin] mobile:[13621700192] validate msgcode fail!
+[2017-06-05 13:40:05.094] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:50:05',`updatedAt`='2017-06-05 05:40:05' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:40:11.183] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:40:11.187] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:40:11.188] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 13:40:11.189] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 13:40:11.191] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 13:40:11.216] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:50:11',`updatedAt`='2017-06-05 05:40:11' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:40:18.388] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:40:18.391] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:40:18.392] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 13:40:18.399] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:50:18',`updatedAt`='2017-06-05 05:40:18' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:40:29.557] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:40:29.560] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:42:53.736] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 13:42:53.745] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:52:53',`updatedAt`='2017-06-05 05:42:53' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:42:53.752] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:42:53'
+[2017-06-05 13:42:53.758] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:42:53.760] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:42:53.760] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 13:42:53.762] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 13:42:53.765] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 13:42:53.782] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:52:53',`updatedAt`='2017-06-05 05:42:53' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:43:06.505] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:43:06.507] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:43:06.508] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 13:43:06.512] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:53:06',`updatedAt`='2017-06-05 05:43:06' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:43:10.759] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:43:10.763] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:43:10.763] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 13:43:10.766] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 13:43:10.772] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 13:43:10.795] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:53:10',`updatedAt`='2017-06-05 05:43:10' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:43:17.709] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:43:17.711] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:43:17.712] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 13:43:17.715] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:53:17',`updatedAt`='2017-06-05 05:43:17' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:43:24.800] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:43:24.807] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:43:46.935] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 13:43:46.938] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:53:46',`updatedAt`='2017-06-05 05:43:46' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:44:54.216] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:44:53'
+[2017-06-05 13:45:35.057] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:45:35.070] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:45:37.177] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 13:45:37.194] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:55:37',`updatedAt`='2017-06-05 05:45:37' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:45:42.420] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:45:42.423] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:48:23.537] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 13:48:23.547] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:58:23',`updatedAt`='2017-06-05 05:48:23' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:48:23.565] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:48:23'
+[2017-06-05 13:48:23.581] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:48:23.584] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:48:23.584] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 13:48:23.591] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 13:48:23.593] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 13:48:23.623] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 05:58:23',`updatedAt`='2017-06-05 05:48:23' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:50:23.580] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:50:23'
+[2017-06-05 13:52:23.571] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:52:23'
+[2017-06-05 13:54:23.584] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:54:23'
+[2017-06-05 13:56:23.594] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:56:23'
+[2017-06-05 13:57:26.296] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:57:26.298] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:57:26.299] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 13:57:26.299] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 13:57:26.300] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 13:57:26.315] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:07:26',`updatedAt`='2017-06-05 05:57:26' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:57:28.159] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:57:28.162] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:57:28.162] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 13:57:28.163] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 13:57:28.167] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 13:57:28.177] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:07:28',`updatedAt`='2017-06-05 05:57:28' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:57:50.644] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 13:57:50.646] [INFO] [default] - Process:5472 is processing
+[2017-06-05 13:57:50.646] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 13:57:50.647] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 13:57:50.662] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 13:57:50.678] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:07:50',`updatedAt`='2017-06-05 05:57:50' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 13:58:23.604] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 05:58:23'
+[2017-06-05 14:00:23.595] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:00:23'
+[2017-06-05 14:00:31.044] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:00:31.046] [INFO] [default] - Process:5472 is processing
+[2017-06-05 14:00:31.047] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 14:00:31.048] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 14:00:31.051] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 14:00:31.068] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:10:31',`updatedAt`='2017-06-05 06:00:31' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:00:32.035] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:00:32.039] [INFO] [default] - Process:5472 is processing
+[2017-06-05 14:00:32.039] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 14:00:32.041] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 14:00:32.045] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 14:00:32.059] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:10:32',`updatedAt`='2017-06-05 06:00:32' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:00:38.116] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:00:38.117] [INFO] [default] - Process:5472 is processing
+[2017-06-05 14:01:00.196] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:01:00.225] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','16a3b0c30',164734804930,'',true,'2017-06-05 06:01:00','2017-06-05 06:01:00');
+[2017-06-05 14:01:00.509] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:01:00.519] [ERROR] [default] - user:[admin] ReferenceError: couponResults is not defined
+    at Model.<anonymous> (E:\NodejsWorkspace\catch\routes\generate.js:126:23)
+    at Model.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-05 14:01:00.528] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:11:00',`updatedAt`='2017-06-05 06:01:00' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:01:13.685] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:01:13.686] [INFO] [default] - Process:5472 is processing
+[2017-06-05 14:01:13.686] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 14:01:13.688] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 14:01:13.689] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 14:01:13.699] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:11:13',`updatedAt`='2017-06-05 06:01:13' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:01:23.034] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:01:23.040] [INFO] [default] - Process:5472 is processing
+[2017-06-05 14:01:23.041] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:01:23.056] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','8d4f1d8a4',8504521508474,'',true,'2017-06-05 06:01:23','2017-06-05 06:01:23');
+[2017-06-05 14:01:23.124] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:01:23.132] [ERROR] [default] - user:[admin] ReferenceError: couponResults is not defined
+    at Model.<anonymous> (E:\NodejsWorkspace\catch\routes\generate.js:126:23)
+    at Model.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-05 14:01:23.143] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:11:23',`updatedAt`='2017-06-05 06:01:23' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:02:23.580] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:02:23'
+[2017-06-05 14:02:44.465] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:02:44.468] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:02:44.482] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:02:44.483] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:02:44.484] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:02:44.485] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:02:44.487] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:02:44.489] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-06-05 14:02:44.492] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-06-05 14:02:44.494] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-06-05 14:02:44.497] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-06-05 14:02:44.498] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-06-05 14:02:44.499] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-06-05 14:02:44.500] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-06-05 14:02:47.899] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:02:47.902] [INFO] [default] - Process:6756 is processing
+[2017-06-05 14:02:47.903] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 14:02:47.904] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 14:02:47.908] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 14:02:47.941] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:12:47',`updatedAt`='2017-06-05 06:02:47' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:02:56.368] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:02:56.370] [INFO] [default] - Process:6756 is processing
+[2017-06-05 14:02:56.372] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:02:56.382] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','37d2ed917',375025150917,'',true,'2017-06-05 06:02:56','2017-06-05 06:02:56');
+[2017-06-05 14:02:56.568] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:02:56.582] [INFO] console - Executing (default): INSERT INTO `Couponstats` (`id`,`src`,`dest`,`totalnum`,`usednum`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code',1,0,'2017-06-05 06:02:56','2017-06-05 06:02:56');
+[2017-06-05 14:02:56.893] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:02:56.900] [ERROR] [default] - user:[admin] TypeError: Cannot read property 'result' of undefined
+    at Model.<anonymous> (E:\NodejsWorkspace\catch\routes\generate.js:142:20)
+    at Model.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-05 14:02:56.907] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:12:56',`updatedAt`='2017-06-05 06:02:56' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:02:57.016] [ERROR] [default] - TypeError: callback is not a function
+    at E:\NodejsWorkspace\catch\core\topClient.js:38:20
+    at E:\NodejsWorkspace\catch\core\topClient.js:136:9
+    at done (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:444:5)
+    at E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:693:9
+    at decodeContent (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:517:14)
+    at IncomingMessage.<anonymous> (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:658:7)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2017-06-05 14:03:35.052] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:03:35.055] [INFO] [default] - Process:6756 is processing
+[2017-06-05 14:03:35.057] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:03:35.064] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','24536aaab',2453647474748,'',true,'2017-06-05 06:03:35','2017-06-05 06:03:35');
+[2017-06-05 14:03:35.143] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:03:35.160] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=2,`updatedAt`='2017-06-05 06:03:35' WHERE `id` = 12
+[2017-06-05 14:03:35.274] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:10:35.047] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:10:35.054] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:10:35.055] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:10:35.057] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:10:35.061] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:10:35.074] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:10:35.075] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:10:35.081] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-06-05 14:10:35.082] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-06-05 14:10:35.086] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-06-05 14:10:35.087] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-06-05 14:10:35.090] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-06-05 14:10:35.095] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-06-05 14:10:35.095] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-06-05 14:10:39.924] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:10:39.930] [INFO] [default] - Process:8868 is processing
+[2017-06-05 14:10:39.931] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 14:10:39.932] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 14:10:39.935] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 14:10:39.969] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:20:39',`updatedAt`='2017-06-05 06:10:39' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:10:47.330] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:10:47.332] [INFO] [default] - Process:8868 is processing
+[2017-06-05 14:10:47.333] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:10:47.344] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','3a2feba2f',347252514847252,'',true,'2017-06-05 06:10:47','2017-06-05 06:10:47');
+[2017-06-05 14:10:47.433] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:10:47.446] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=3,`updatedAt`='2017-06-05 06:10:47' WHERE `id` = 12
+[2017-06-05 14:10:47.542] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:10:47.546] [ERROR] [default] - user:[admin] TypeError: client.executeAsync is not a function
+    at Model.<anonymous> (E:\NodejsWorkspace\catch\routes\generate.js:131:27)
+    at Model.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-05 14:10:47.560] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:20:47',`updatedAt`='2017-06-05 06:10:47' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:12:34.806] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:12:34'
+[2017-06-05 14:14:03.410] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:14:03.413] [INFO] [default] - Process:8868 is processing
+[2017-06-05 14:14:03.414] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:14:03.420] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','13cbbfed3',134948485251503,'',true,'2017-06-05 06:14:03','2017-06-05 06:14:03');
+[2017-06-05 14:14:03.626] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:14:03.645] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=4,`updatedAt`='2017-06-05 06:14:03' WHERE `id` = 12
+[2017-06-05 14:14:03.720] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:14:03.721] [ERROR] [default] - user:[admin] TypeError: client.executeAsync is not a function
+    at Model.<anonymous> (E:\NodejsWorkspace\catch\routes\generate.js:131:27)
+    at Model.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-05 14:14:03.727] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:24:03',`updatedAt`='2017-06-05 06:14:03' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:14:15.204] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:14:15.208] [INFO] [default] - Process:8868 is processing
+[2017-06-05 14:14:15.210] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:14:15.218] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','8b9138337',8489138337,'',true,'2017-06-05 06:14:15','2017-06-05 06:14:15');
+[2017-06-05 14:14:15.280] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:14:15.290] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=5,`updatedAt`='2017-06-05 06:14:15' WHERE `id` = 12
+[2017-06-05 14:14:15.392] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:14:15.394] [ERROR] [default] - user:[admin] TypeError: client.executeAsync is not a function
+    at Model.<anonymous> (E:\NodejsWorkspace\catch\routes\generate.js:131:27)
+    at Model.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-05 14:14:15.408] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:24:15',`updatedAt`='2017-06-05 06:14:15' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:14:34.827] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:14:34'
+[2017-06-05 14:14:37.113] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:14:37.115] [INFO] [default] - Process:8868 is processing
+[2017-06-05 14:14:37.116] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 14:14:37.117] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 14:14:37.119] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 14:14:37.145] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:24:37',`updatedAt`='2017-06-05 06:14:37' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:14:51.401] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:14:51.403] [INFO] [default] - Process:8868 is processing
+[2017-06-05 14:14:51.405] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:14:51.417] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','b697560e9',48697560519,'',true,'2017-06-05 06:14:51','2017-06-05 06:14:51');
+[2017-06-05 14:14:51.547] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:14:51.550] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=6,`updatedAt`='2017-06-05 06:14:51' WHERE `id` = 12
+[2017-06-05 14:14:51.625] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:14:51.627] [ERROR] [default] - user:[admin] TypeError: client.executeAsync is not a function
+    at Model.<anonymous> (E:\NodejsWorkspace\catch\routes\generate.js:131:27)
+    at Model.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-05 14:14:51.642] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:24:51',`updatedAt`='2017-06-05 06:14:51' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:17:56.651] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:17:56.669] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:17:56.672] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:17:56.673] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:17:56.675] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:17:56.675] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:17:56.677] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:17:56.678] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-06-05 14:17:56.681] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-06-05 14:17:56.684] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-06-05 14:17:56.685] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-06-05 14:17:56.689] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-06-05 14:17:56.690] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-06-05 14:17:56.693] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-06-05 14:18:04.047] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:18:04.051] [INFO] [default] - Process:1860 is processing
+[2017-06-05 14:18:04.052] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:18:04.064] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','7e76fb928',751765248928,'',true,'2017-06-05 06:18:04','2017-06-05 06:18:04');
+[2017-06-05 14:18:04.167] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:18:04.187] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=7,`updatedAt`='2017-06-05 06:18:04' WHERE `id` = 12
+[2017-06-05 14:18:04.311] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:18:04.500] [ERROR] [default] - user:[admin] TOPClientError: Remote service error, code 15; isv.TEMPLATE_MISSING_PARAMETERS: 参数缺失，缺少参数：name，模板配置：获得${name}优惠券1张，券码${couponcode}。，传参：{&quot;msgcode&quot;:&quot;1&quot;}
+    at E:\NodejsWorkspace\catch\core\topClient.js:127:23
+    at done (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:444:5)
+    at E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:693:9
+    at decodeContent (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:517:14)
+    at IncomingMessage.<anonymous> (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:658:7)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2017-06-05 14:18:04.529] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:28:04',`updatedAt`='2017-06-05 06:18:04' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:19:56.512] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:19:56'
+[2017-06-05 14:21:34.481] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:21:34.484] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:21:34.485] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:21:34.489] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:21:34.490] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:21:34.493] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:21:34.495] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-05 14:21:34.496] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-06-05 14:21:34.498] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-06-05 14:21:34.501] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-06-05 14:21:34.502] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-06-05 14:21:34.504] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-06-05 14:21:34.506] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-06-05 14:21:34.507] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-06-05 14:21:47.864] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:21:47.869] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:21:47.870] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 14:21:47.881] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:31:47',`updatedAt`='2017-06-05 06:21:47' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:22:04.191] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:22:04.196] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:22:29.251] [INFO] [default] - user:[admin] mobile:[13621700192] validate corp fail!
+[2017-06-05 14:22:29.264] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:32:29',`updatedAt`='2017-06-05 06:22:29' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:23:01.688] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:23:01.690] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:23:01.690] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 14:23:01.692] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 14:23:01.694] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 14:23:01.720] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:33:01',`updatedAt`='2017-06-05 06:23:01' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:23:34.290] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:23:34'
+[2017-06-05 14:25:34.301] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:25:34'
+[2017-06-05 14:26:52.705] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:26:52.709] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:26:52.711] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:26:52.728] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','c1c18c05a',4914918490547,'',true,'2017-06-05 06:26:52','2017-06-05 06:26:52');
+[2017-06-05 14:26:52.787] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:26:52.793] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=8,`updatedAt`='2017-06-05 06:26:52' WHERE `id` = 12
+[2017-06-05 14:26:52.863] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:26:53.120] [ERROR] [default] - user:[admin] TOPClientError: Remote service error, code 15; isv.PARAM_LENGTH_LIMIT: 变量长度超过限制
+    at E:\NodejsWorkspace\catch\core\topClient.js:127:23
+    at done (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:444:5)
+    at E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:693:9
+    at decodeContent (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:517:14)
+    at IncomingMessage.<anonymous> (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:658:7)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2017-06-05 14:26:53.127] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:36:53',`updatedAt`='2017-06-05 06:26:53' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:27:14.894] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:27:14.899] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:27:14.899] [INFO] [default] - user:[admin] open generate.html
+[2017-06-05 14:27:14.902] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'wx' AND `Corprelation`.`state` = true;
+[2017-06-05 14:27:14.906] [INFO] [default] - user:[admin] generate.html initialize
+[2017-06-05 14:27:14.923] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:37:14',`updatedAt`='2017-06-05 06:27:14' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:27:22.615] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:27:22.619] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:27:22.621] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:27:22.634] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','24d70a45f',245070474552,'',true,'2017-06-05 06:27:22','2017-06-05 06:27:22');
+[2017-06-05 14:27:22.715] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:27:22.720] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=9,`updatedAt`='2017-06-05 06:27:22' WHERE `id` = 12
+[2017-06-05 14:27:22.996] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:27:23.059] [ERROR] [default] - user:[admin] TOPClientError: Remote service error, code 15; isv.PARAM_LENGTH_LIMIT: 变量长度超过限制
+    at E:\NodejsWorkspace\catch\core\topClient.js:127:23
+    at done (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:444:5)
+    at E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:693:9
+    at decodeContent (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:517:14)
+    at IncomingMessage.<anonymous> (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:658:7)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2017-06-05 14:27:23.068] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:37:23',`updatedAt`='2017-06-05 06:27:23' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:27:34.279] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:27:34'
+[2017-06-05 14:29:34.278] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:29:34'
+[2017-06-05 14:30:42.229] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:30:42.247] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:30:42.249] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:30:42.254] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','code','b405e0ed5',4840551051505,'',true,'2017-06-05 06:30:42','2017-06-05 06:30:42');
+[2017-06-05 14:30:42.321] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'code' LIMIT 1;
+[2017-06-05 14:30:42.332] [INFO] console - Executing (default): UPDATE `Couponstats` SET `totalnum`=10,`updatedAt`='2017-06-05 06:30:42' WHERE `id` = 12
+[2017-06-05 14:30:42.396] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:30:42.602] [ERROR] [default] - user:[admin] TOPClientError: Remote service error, code 15; isv.PARAM_LENGTH_LIMIT: 变量长度超过限制
+    at E:\NodejsWorkspace\catch\core\topClient.js:127:23
+    at done (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:444:5)
+    at E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:693:9
+    at decodeContent (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:517:14)
+    at IncomingMessage.<anonymous> (E:\NodejsWorkspace\catch\node_modules\urllib\lib\urllib.js:658:7)
+    at emitNone (events.js:91:20)
+    at IncomingMessage.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:974:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+[2017-06-05 14:30:42.610] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:40:42',`updatedAt`='2017-06-05 06:30:42' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:31:21.905] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:31:21.911] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:31:21.912] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:31:21.922] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','xxxx','f1a283315',52147283315,'',true,'2017-06-05 06:31:21','2017-06-05 06:31:21');
+[2017-06-05 14:31:21.989] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'wx' AND `Couponstat`.`dest` = 'xxxx' LIMIT 1;
+[2017-06-05 14:31:22.000] [INFO] console - Executing (default): INSERT INTO `Couponstats` (`id`,`src`,`dest`,`totalnum`,`usednum`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'wx','xxxx',1,0,'2017-06-05 06:31:21','2017-06-05 06:31:21');
+[2017-06-05 14:31:22.074] [INFO] [default] - user:[admin] generate finished
+[2017-06-05 14:31:22.151] [INFO] [default] - mobile:[13621700192] couponcode:[f1a283315]
+[2017-06-05 14:31:22.160] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 06:41:22',`updatedAt`='2017-06-05 06:31:22' WHERE `sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J'
+[2017-06-05 14:31:34.297] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:31:34'
+[2017-06-05 14:33:34.290] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:33:34'
+[2017-06-05 14:35:34.307] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:35:34'
+[2017-06-05 14:37:34.307] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:37:34'
+[2017-06-05 14:39:34.310] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:39:34'
+[2017-06-05 14:41:34.307] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:41:34'
+[2017-06-05 14:43:34.323] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:43:34'
+[2017-06-05 14:45:34.329] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:45:34'
+[2017-06-05 14:47:34.305] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:47:34'
+[2017-06-05 14:49:34.324] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:49:34'
+[2017-06-05 14:51:34.313] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:51:34'
+[2017-06-05 14:53:34.331] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:53:34'
+[2017-06-05 14:55:34.380] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:55:34'
+[2017-06-05 14:57:34.345] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:57:34'
+[2017-06-05 14:58:52.666] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:58:52.669] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:58:52.679] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:58:52.680] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:58:52.694] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:58:52.696] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:58:52.696] [INFO] [default] - user:[::1] open login.html
+[2017-06-05 14:59:09.730] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:59:09.733] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:59:09.733] [INFO] [default] - user:[::1] begin to login
+[2017-06-05 14:59:09.734] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'aa' AND `User`.`password` = '202cb962ac59075b964b07152d234b70' LIMIT 1;
+[2017-06-05 14:59:09.758] [INFO] [default] - user:[::1] 登录失败！
+[2017-06-05 14:59:11.833] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'vRuxYslfdO4IxF4BjmJ5LCKfKSn9bG6J';
+[2017-06-05 14:59:11.834] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:59:11.834] [INFO] [default] - user:[::1] begin to login
+[2017-06-05 14:59:11.835] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'aa' AND `User`.`password` = '698d51a19d8a121ce581499d7b701668' LIMIT 1;
+[2017-06-05 14:59:11.836] [INFO] [default] - user:[aa] login success
+[2017-06-05 14:59:11.840] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX';
+[2017-06-05 14:59:11.843] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('z19xpbfH6uFWx7QgesAM-WHNk31ED_XX','2017-06-05 07:09:11','{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"user\":\"aa\",\"corp\":\"code\"}','2017-06-05 06:59:11','2017-06-05 06:59:11');
+[2017-06-05 14:59:11.851] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX';
+[2017-06-05 14:59:11.853] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:59:11.853] [INFO] [default] - user:[aa] open check.html
+[2017-06-05 14:59:11.861] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 07:09:11',`updatedAt`='2017-06-05 06:59:11' WHERE `sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX'
+[2017-06-05 14:59:13.451] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX';
+[2017-06-05 14:59:13.452] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:59:13.453] [INFO] [default] - user:[aa] open generate.html
+[2017-06-05 14:59:13.454] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corprelations` AS `Corprelation` WHERE `Corprelation`.`src` = 'code' AND `Corprelation`.`state` = true;
+[2017-06-05 14:59:13.460] [INFO] [default] - user:[aa] generate.html initialize
+[2017-06-05 14:59:13.474] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 07:09:13',`updatedAt`='2017-06-05 06:59:13' WHERE `sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX'
+[2017-06-05 14:59:27.631] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX';
+[2017-06-05 14:59:27.635] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:59:27.636] [INFO] [default] - user:[aa] mobile:[13621700192] validate msgcode fail!
+[2017-06-05 14:59:27.640] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 07:09:27',`updatedAt`='2017-06-05 06:59:27' WHERE `sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX'
+[2017-06-05 14:59:31.011] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX';
+[2017-06-05 14:59:31.012] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:59:31.188] [INFO] [default] - mobile:[13621700192] msgcode:[6747]
+[2017-06-05 14:59:31.191] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX';
+[2017-06-05 14:59:31.199] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 07:09:31',`data`='{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"user\":\"aa\",\"corp\":\"code\",\"mobile\":\"13621700192\",\"msgcode\":6747}',`updatedAt`='2017-06-05 06:59:31' WHERE `sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX'
+[2017-06-05 14:59:34.319] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 06:59:34'
+[2017-06-05 14:59:53.573] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX';
+[2017-06-05 14:59:53.575] [INFO] [default] - Process:1420 is processing
+[2017-06-05 14:59:53.578] [INFO] console - Executing (default): SELECT `couponno` FROM `Coupons` AS `Coupon`;
+[2017-06-05 14:59:53.585] [INFO] console - Executing (default): INSERT INTO `Coupons` (`id`,`src`,`dest`,`couponcode`,`couponno`,`discount`,`state`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'code','ee','9d47939c7',95047939497,'',true,'2017-06-05 06:59:53','2017-06-05 06:59:53');
+[2017-06-05 14:59:53.771] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat` WHERE `Couponstat`.`src` = 'code' AND `Couponstat`.`dest` = 'ee' LIMIT 1;
+[2017-06-05 14:59:53.791] [INFO] console - Executing (default): INSERT INTO `Couponstats` (`id`,`src`,`dest`,`totalnum`,`usednum`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'code','ee',1,0,'2017-06-05 06:59:53','2017-06-05 06:59:53');
+[2017-06-05 14:59:53.874] [INFO] [default] - user:[aa] generate finished
+[2017-06-05 14:59:54.911] [INFO] [default] - mobile:[13621700192] couponcode:[9d47939c7]
+[2017-06-05 14:59:54.919] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-05 07:09:54',`updatedAt`='2017-06-05 06:59:54' WHERE `sid` = 'z19xpbfH6uFWx7QgesAM-WHNk31ED_XX'
+[2017-06-05 15:01:34.342] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 07:01:34'
+[2017-06-05 15:03:34.330] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 07:03:34'
+[2017-06-05 15:05:34.346] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 07:05:34'
+[2017-06-05 15:07:34.339] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 07:07:34'
+[2017-06-05 15:09:34.373] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 07:09:34'
+[2017-06-05 15:11:34.348] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-05 07:11:34'

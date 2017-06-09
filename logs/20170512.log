@@ -1,0 +1,456 @@
+[2017-05-12 13:58:30.232] [INFO] [default] - user:[aa] open check
+[2017-05-12 14:51:33.406] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 14:53:36.498] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 14:53:36.529] [INFO] [default] - user:[aa] login success
+[2017-05-12 14:53:36.537] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 14:53:49.151] [INFO] [default] - user:[aa] 优惠码无效！
+[2017-05-12 14:53:58.411] [INFO] [default] - user:[aa] check finished 
+[2017-05-12 14:54:03.741] [INFO] [default] - user:[aa] open coupon.html
+[2017-05-12 14:54:03.751] [ERROR] [default] - user:[aa] coupon.html initialize
+[2017-05-12 14:54:11.579] [INFO] [default] - user:[aa] begin to generate coupons
+[2017-05-12 14:54:11.966] [INFO] [default] - user:[aa] generate finished
+[2017-05-12 14:54:22.413] [INFO] [default] - user:[aa] open user.html
+[2017-05-12 14:54:22.476] [INFO] [default] - user:[aa] user.html initialize
+[2017-05-12 14:54:38.591] [INFO] [default] - user:[aa] begin to upsert user
+[2017-05-12 14:54:39.118] [INFO] [default] - user:[aa] upsert user finished
+[2017-05-12 14:54:43.720] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 14:54:43.724] [INFO] [default] - user:[aa] query corporations info finished 
+[2017-05-12 15:19:53.066] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 15:19:55.772] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 15:19:55.806] [INFO] [default] - user:[aa] login success
+[2017-05-12 15:19:55.814] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 15:19:58.428] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:19:58.430] [INFO] [default] - user:[aa] corporation.html initialize 
+[2017-05-12 15:20:28.057] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:20:28.123] [ERROR] [default] - user:[aa] ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+[2017-05-12 15:22:20.400] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 15:22:22.908] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 15:22:22.919] [INFO] [default] - user:[aa] login success
+[2017-05-12 15:22:22.927] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 15:22:24.987] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:22:24.990] [INFO] [default] - user:[aa] corporation.html initialize 
+[2017-05-12 15:24:04.423] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:24:04.430] [ERROR] [default] - user:[aa] ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+[2017-05-12 15:24:26.317] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:26:59.019] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 15:27:17.856] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 15:27:17.895] [INFO] [default] - user:[bb] login success
+[2017-05-12 15:27:17.904] [INFO] [default] - user:[bb] open check.html
+[2017-05-12 15:27:20.902] [INFO] [default] - user:[bb] open corporation.html
+[2017-05-12 15:27:24.935] [ERROR] [default] - user:[bb] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:28:21.875] [INFO] [default] - user:[bb] open corporation.html
+[2017-05-12 15:28:21.906] [ERROR] [default] - user:[bb] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:31:18.170] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 15:31:21.646] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 15:31:21.672] [INFO] [default] - user:[aa] login success
+[2017-05-12 15:31:21.680] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 15:31:23.825] [INFO] [default] - user:[aa] open coupon.html
+[2017-05-12 15:31:23.848] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:31:55.485] [INFO] [default] - user:[aa] open coupon.html
+[2017-05-12 15:31:55.507] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:44:40.494] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 15:44:46.862] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 15:44:46.905] [INFO] [default] - user:[aa] login success
+[2017-05-12 15:44:46.912] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 15:44:49.053] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:44:49.059] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:51:38.909] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:51:38.957] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:51:39.826] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:51:39.830] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:51:40.698] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:51:40.701] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:52:07.564] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:52:07.585] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:52:08.693] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:52:08.695] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:52:17.588] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:52:17.591] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:52:18.200] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:52:18.207] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:52:18.423] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:52:18.427] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:52:18.595] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:52:18.599] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:52:18.772] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:52:18.774] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:52:19.250] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:52:19.252] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:55:06.691] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 15:55:09.774] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 15:55:09.782] [INFO] [default] - user:[aa] login success
+[2017-05-12 15:55:09.793] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 15:55:11.478] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:55:11.481] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:55:33.324] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:55:33.354] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:57:46.868] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:57:46.908] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 15:57:47.784] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 15:57:47.786] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 16:13:08.141] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 16:13:11.571] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 16:13:11.642] [INFO] [default] - user:[aa] login success
+[2017-05-12 16:13:11.664] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 16:13:14.532] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 16:13:14.535] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 16:13:14.539] [ERROR] console - Error: Failed to lookup view "error" in views directory "E:\NodejsWorkspace\catch\views"
+    at EventEmitter.render (E:\NodejsWorkspace\catch\node_modules\express\lib\application.js:580:17)
+    at ServerResponse.render (E:\NodejsWorkspace\catch\node_modules\express\lib\response.js:966:7)
+    at E:\NodejsWorkspace\catch\app.js:79:7
+    at Layer.handle_error (E:\NodejsWorkspace\catch\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:315:13)
+    at E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:275:10)
+    at Layer.handle_error (E:\NodejsWorkspace\catch\node_modules\express\lib\router\layer.js:67:12)
+    at trim_prefix (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:315:13)
+    at E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:275:10)
+    at E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:635:15
+    at IncomingMessage.next (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:260:14)
+    at done (E:\NodejsWorkspace\catch\node_modules\express\lib\response.js:961:25)
+[2017-05-12 16:13:57.533] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 16:14:01.518] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 16:14:01.530] [INFO] [default] - user:[aa] login success
+[2017-05-12 16:14:01.546] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 16:14:03.173] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 16:14:03.186] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 16:14:03.197] [ERROR] console - Error: Failed to lookup view "error" in views directory "E:\NodejsWorkspace\catch\views"
+    at EventEmitter.render (E:\NodejsWorkspace\catch\node_modules\express\lib\application.js:580:17)
+    at ServerResponse.render (E:\NodejsWorkspace\catch\node_modules\express\lib\response.js:966:7)
+    at E:\NodejsWorkspace\catch\app.js:81:7
+    at Layer.handle_error (E:\NodejsWorkspace\catch\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:315:13)
+    at E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:275:10)
+    at E:\NodejsWorkspace\catch\app.js:70:3
+    at Layer.handle [as handle_request] (E:\NodejsWorkspace\catch\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:317:13)
+    at E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:275:10)
+    at E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:635:15
+    at next (E:\NodejsWorkspace\catch\node_modules\express\lib\router\index.js:260:14)
+[2017-05-12 16:17:04.951] [INFO] [default] - user:[::1] open login.html
+[2017-05-12 16:17:08.124] [INFO] [default] - user:[::1] begin to login
+[2017-05-12 16:17:08.162] [INFO] [default] - user:[aa] login success
+[2017-05-12 16:17:08.172] [INFO] [default] - user:[aa] open check.html
+[2017-05-12 16:17:10.356] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 16:17:10.364] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-12 16:17:42.523] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-12 16:17:42.535] [ERROR] [default] - user:[aa] SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.corporations' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)

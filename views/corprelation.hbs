@@ -1,0 +1,48 @@
+<div class="main-page table-responsive" id="corprelation">
+    <div class="panel panel-default panel-primary">
+        <div class="panel-heading">
+            <div class="corprelation-title">机构关系新增</div>
+            <div class="sel-org col-sm-6">
+                <select class="form-control" id="sel-out">
+                    {{#each corps}}
+                        <option value="{{code}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="group-btn">
+            <button type="button" class="btn btn-default btn-info btn-insert">添加</button>
+            </div>
+        </div>
+        <table class="table">
+            <tbody id="tb-unrelated">
+            </tbody>
+        </table>
+    </div>
+    <div class="panel panel-default panel-primary">
+        <div class="panel-heading">
+            <div class="corprelation-title">机构关系维护</div>
+            <div class="sel-org col-sm-6">
+                <select class="form-control" id="sel-in">
+                    {{#each corps}}
+                        <option value="{{code}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="group-btn">
+                <button type="button" class="btn btn-default btn-info btn-delete">删除</button>
+            </div>
+        </div>
+        <table class="table">
+            <tbody id="tb-related">
+            {{#each related}}
+                <tr>
+                    <th>
+                        <input type="radio" name="optionsRadios" id="sth{{add @index 1}}0" value="{{code}}">
+                    </th>
+                    <th id="sth{{add @index 1}}1">{{name}}</th>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

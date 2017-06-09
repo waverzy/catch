@@ -1,0 +1,191 @@
+[2017-05-19 14:25:19.271] [INFO] [default] - Master 5232 is running
+[2017-05-19 14:25:19.353] [INFO] [default] - [Worker]1forked
+[2017-05-19 14:25:19.441] [INFO] [default] - [Worker]2forked
+[2017-05-19 14:25:19.554] [INFO] [default] - [Worker]3forked
+[2017-05-19 14:25:19.661] [INFO] [default] - [Worker]4forked
+[2017-05-19 14:25:21.234] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:21.244] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:21.249] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:21.257] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:21.331] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:21.430] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:21.893] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:25:21.914] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:25:21.930] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:25:22.128] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:25:22.153] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:25:22.325] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:25:22.732] [INFO] [default] - Worker 4 pid:7480 started
+[2017-05-19 14:25:22.805] [INFO] [default] - Worker 1 pid:5624 started
+[2017-05-19 14:25:23.020] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.039] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.042] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.044] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.047] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.049] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.050] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:25:23.054] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:25:23.055] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:25:23.059] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:25:23.063] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:25:23.066] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:25:23.092] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.095] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.097] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.131] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.135] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.137] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.142] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:25:23.147] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:25:23.148] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:25:23.154] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:25:23.158] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:25:23.166] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:25:23.390] [INFO] [default] - Worker 2 pid:9192 started
+[2017-05-19 14:25:23.599] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.600] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.601] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.601] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.604] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.608] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.611] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:25:23.615] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:25:23.616] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:25:23.619] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:25:23.624] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:25:23.627] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:25:23.728] [INFO] [default] - Worker 3 pid:6008 started
+[2017-05-19 14:25:23.872] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.875] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.877] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.879] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.881] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.882] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:25:23.882] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:25:23.884] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:25:23.887] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:25:23.891] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:25:23.895] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:25:23.898] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:26:00.025] [INFO] [default] - Process:6008 is processing
+[2017-05-19 14:26:23.686] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-19 14:26:24.654] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-19 14:26:25.597] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-19 14:28:00.068] [INFO] [default] - Process:5624 is processing
+[2017-05-19 14:30:00.438] [INFO] [default] - Process:5624 is processing
+[2017-05-19 14:32:05.493] [INFO] [default] - Process:5624 is processing
+[2017-05-19 14:36:42.408] [INFO] [default] - Process:5624 is processing
+[2017-05-19 14:37:23.836] [INFO] [default] - Master 9696 is running
+[2017-05-19 14:37:23.866] [INFO] [default] - [Worker]1forked
+[2017-05-19 14:37:23.974] [INFO] [default] - [Worker]2forked
+[2017-05-19 14:37:24.067] [INFO] [default] - [Worker]3forked
+[2017-05-19 14:37:24.184] [INFO] [default] - [Worker]4forked
+[2017-05-19 14:37:24.475] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:24.477] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:24.513] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:24.514] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:24.518] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:24.519] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:24.522] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:37:24.523] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:37:24.530] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:37:24.533] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:37:24.536] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:37:24.539] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:37:26.463] [INFO] [default] - Worker 1 pid:1084 started
+[2017-05-19 14:37:26.702] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:26.703] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:26.705] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:26.715] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:26.718] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:26.720] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:26.721] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:37:26.726] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:37:26.732] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:37:26.732] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:37:26.740] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:37:26.744] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:37:26.794] [INFO] [default] - Worker 2 pid:3564 started
+[2017-05-19 14:37:27.182] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.185] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.188] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.192] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.196] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.044] [INFO] [default] - Worker 4 pid:10228 started
+[2017-05-19 14:37:27.201] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.204] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:37:27.207] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:37:27.215] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:37:27.224] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:37:27.231] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:37:27.236] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:37:27.317] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.318] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.324] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.331] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.332] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.148] [INFO] [default] - Worker 3 pid:10124 started
+[2017-05-19 14:37:27.335] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.339] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:37:27.340] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:37:27.345] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:37:27.347] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:37:27.351] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:37:27.357] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:37:27.401] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.403] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.407] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.410] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.415] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.417] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-19 14:37:27.419] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-19 14:37:27.423] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-19 14:37:27.427] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-19 14:37:27.436] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-19 14:37:27.447] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-19 14:37:27.447] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-19 14:37:36.518] [INFO] [default] - Process:10124 is processing
+[2017-05-19 14:38:23.758] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-19 14:38:26.336] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-19 14:38:26.635] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-19 14:38:26.884] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-19 14:38:26.947] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-19 14:39:36.573] [INFO] [default] - Process:10228 is processing
+[2017-05-19 14:46:37.051] [INFO] [default] - Process:10228 is processing
+[2017-05-19 14:53:04.589] [INFO] [default] - Process:10228 is processing
+[2017-05-19 14:55:04.613] [INFO] [default] - Process:10124 is processing
+[2017-05-19 15:12:42.907] [INFO] [default] - Process:10124 is processing
+[2017-05-19 15:14:42.959] [INFO] [default] - Process:3564 is processing
+[2017-05-19 16:04:14.174] [INFO] [default] - Process:3564 is processing

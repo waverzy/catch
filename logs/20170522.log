@@ -1,0 +1,1121 @@
+[2017-05-22 13:01:32.498] [INFO] [default] - Master 8500 is running
+[2017-05-22 13:01:32.569] [INFO] [default] - [Worker]1forked
+[2017-05-22 13:01:32.680] [INFO] [default] - [Worker]2forked
+[2017-05-22 13:01:33.186] [INFO] [default] - [Worker]3forked
+[2017-05-22 13:01:33.427] [INFO] [default] - [Worker]4forked
+[2017-05-22 13:01:39.026] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:01:39.051] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:01:39.052] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:01:39.059] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:01:39.155] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:01:40.515] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(50000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:01:40.519] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:01:40.520] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 13:01:40.525] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 13:01:40.533] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 13:01:40.704] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 13:01:40.706] [INFO] console - { SequelizeDatabaseError: ER_TABLE_CANT_HANDLE_BLOB: The used table type doesn't support BLOB/TEXT columns
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+  name: 'SequelizeDatabaseError',
+  message: 'ER_TABLE_CANT_HANDLE_BLOB: The used table type doesn\'t support BLOB/TEXT columns',
+  parent: 
+   { Error: ER_TABLE_CANT_HANDLE_BLOB: The used table type doesn't support BLOB/TEXT columns
+       at Query.Sequence._packetToError (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+       at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+       at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+       at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+       at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+       at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+       at emitOne (events.js:96:13)
+       at Socket.emit (events.js:188:7)
+       at readableAddChunk (_stream_readable.js:176:18)
+       at Socket.Readable.push (_stream_readable.js:134:10)
+       at TCP.onread (net.js:551:20)
+       --------------------
+       at Protocol._enqueue (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+       at Connection.query (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:208:25)
+       at E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:40:21
+       at Promise._execute (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\debuggability.js:300:9)
+       at Promise._resolveFromExecutor (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:483:18)
+       at new Promise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:79:10)
+       at Query.run (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:39:17)
+       at E:\NodejsWorkspace\catch\node_modules\sequelize\lib\sequelize.js:849:20
+       at E:\NodejsWorkspace\catch\node_modules\retry-as-promised\index.js:40:21
+       at Promise._execute (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\debuggability.js:300:9)
+       at Promise._resolveFromExecutor (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:483:18)
+       at new Promise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:79:10)
+       at retryAsPromised (E:\NodejsWorkspace\catch\node_modules\retry-as-promised\index.js:30:10)
+       at ConnectionManager.<anonymous> (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\sequelize.js:848:12)
+       at ConnectionManager.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+       at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+     code: 'ER_TABLE_CANT_HANDLE_BLOB',
+     errno: 1163,
+     sqlState: '42000',
+     index: 0,
+     sql: 'CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(50000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;' },
+  original: 
+   { Error: ER_TABLE_CANT_HANDLE_BLOB: The used table type doesn't support BLOB/TEXT columns
+       at Query.Sequence._packetToError (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+       at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:77:18)
+       at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+       at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+       at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+       at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+       at emitOne (events.js:96:13)
+       at Socket.emit (events.js:188:7)
+       at readableAddChunk (_stream_readable.js:176:18)
+       at Socket.Readable.push (_stream_readable.js:134:10)
+       at TCP.onread (net.js:551:20)
+       --------------------
+       at Protocol._enqueue (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+       at Connection.query (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:208:25)
+       at E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:40:21
+       at Promise._execute (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\debuggability.js:300:9)
+       at Promise._resolveFromExecutor (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:483:18)
+       at new Promise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:79:10)
+       at Query.run (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:39:17)
+       at E:\NodejsWorkspace\catch\node_modules\sequelize\lib\sequelize.js:849:20
+       at E:\NodejsWorkspace\catch\node_modules\retry-as-promised\index.js:40:21
+       at Promise._execute (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\debuggability.js:300:9)
+       at Promise._resolveFromExecutor (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:483:18)
+       at new Promise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:79:10)
+       at retryAsPromised (E:\NodejsWorkspace\catch\node_modules\retry-as-promised\index.js:30:10)
+       at ConnectionManager.<anonymous> (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\sequelize.js:848:12)
+       at ConnectionManager.tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+       at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+     code: 'ER_TABLE_CANT_HANDLE_BLOB',
+     errno: 1163,
+     sqlState: '42000',
+     index: 0,
+     sql: 'CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(50000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;' },
+  sql: 'CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(50000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;' }
+[2017-05-22 13:01:40.746] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 13:01:40.762] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 13:02:31.752] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-22 13:16:24.330] [INFO] [default] - Master 9636 is running
+[2017-05-22 13:16:24.407] [INFO] [default] - [Worker]1forked
+[2017-05-22 13:16:24.508] [INFO] [default] - [Worker]2forked
+[2017-05-22 13:16:24.733] [INFO] [default] - [Worker]3forked
+[2017-05-22 13:16:24.827] [INFO] [default] - [Worker]4forked
+[2017-05-22 13:16:25.434] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:25.441] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:25.444] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:25.445] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:25.447] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:25.449] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:25.451] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:25.455] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 13:16:25.460] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 13:16:25.477] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 13:16:25.479] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 13:16:25.484] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 13:16:25.488] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 13:16:25.730] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 13:16:27.040] [INFO] [default] - Worker 2 pid:7508 started
+[2017-05-22 13:16:27.086] [INFO] [default] - Worker 1 pid:9716 started
+[2017-05-22 13:16:27.293] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.337] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.344] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.353] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.363] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.365] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.367] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.372] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.373] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.375] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.376] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 13:16:27.380] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.382] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.380] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 13:16:27.385] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.387] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.392] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 13:16:27.393] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 13:16:27.418] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 13:16:27.419] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 13:16:27.424] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 13:16:27.429] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 13:16:27.436] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 13:16:27.383] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 13:16:27.419] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 13:16:27.422] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 13:16:27.423] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 13:16:27.426] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 13:16:27.659] [INFO] [default] - Worker 3 pid:9748 started
+[2017-05-22 13:16:27.852] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.853] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.853] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.857] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.857] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.860] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.862] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:27.863] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 13:16:27.866] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 13:16:27.874] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 13:16:27.875] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 13:16:27.881] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 13:16:27.887] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 13:16:27.888] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 13:16:27.841] [INFO] [default] - Worker 4 pid:9828 started
+[2017-05-22 13:16:28.023] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:28.028] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:28.031] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:28.034] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:28.039] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:28.050] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:28.051] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:16:28.055] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 13:16:28.056] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 13:16:28.058] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 13:16:28.058] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 13:16:28.067] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 13:16:28.069] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 13:16:28.074] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 13:17:20.723] [INFO] [default] - Process:9828 is processing
+[2017-05-22 13:17:23.947] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-22 13:17:26.916] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-22 13:17:26.930] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-22 13:17:27.548] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-22 13:17:27.735] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-22 13:19:20.727] [INFO] [default] - Process:9828 is processing
+[2017-05-22 13:19:58.514] [INFO] [default] - Process:9748 is processing
+[2017-05-22 13:22:18.078] [INFO] [default] - Process:9748 is processing
+[2017-05-22 13:22:20.789] [INFO] [default] - Process:9748 is processing
+[2017-05-22 13:24:20.807] [INFO] [default] - Process:9748 is processing
+[2017-05-22 13:34:21.394] [INFO] [default] - Master 9356 is running
+[2017-05-22 13:34:21.434] [INFO] [default] - [Worker]1forked
+[2017-05-22 13:34:21.521] [INFO] [default] - [Worker]2forked
+[2017-05-22 13:34:21.649] [INFO] [default] - [Worker]3forked
+[2017-05-22 13:34:21.791] [INFO] [default] - [Worker]4forked
+[2017-05-22 13:34:22.913] [ERROR] [default] - TypeError: Cannot read property 'destroy' of undefined
+    at SequelizeStore.clearExpiredSessions (E:\NodejsWorkspace\catch\node_modules\connect-session-sequelize\lib\connect-session-sequelize.js:144:29)
+    at ontimeout (timers.js:380:14)
+    at tryOnTimeout (timers.js:244:5)
+    at Timer.listOnTimeout (timers.js:214:5)
+[2017-05-22 13:34:23.485] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:34:23.486] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:34:23.535] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:34:23.537] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:34:23.541] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:34:23.542] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:34:23.546] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 13:34:23.553] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 13:34:23.554] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 13:34:23.559] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 13:34:23.560] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 13:34:23.570] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 13:34:23.572] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 13:34:23.600] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 15:24:04.283] [INFO] [default] - Master 9664 is running
+[2017-05-22 15:24:04.386] [INFO] [default] - [Worker]1forked
+[2017-05-22 15:24:04.493] [INFO] [default] - [Worker]2forked
+[2017-05-22 15:24:04.714] [INFO] [default] - [Worker]3forked
+[2017-05-22 15:24:04.821] [INFO] [default] - [Worker]4forked
+[2017-05-22 15:24:07.150] [INFO] [default] - Worker 1 pid:9620 started
+[2017-05-22 15:24:07.472] [INFO] [default] - Worker 2 pid:10224 started
+[2017-05-22 15:24:07.627] [INFO] [default] - Worker 4 pid:7212 started
+[2017-05-22 15:24:11.697] [INFO] [default] - Worker 3 pid:10184 started
+[2017-05-22 15:24:16.097] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.148] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.440] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.495] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.654] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.711] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.711] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.713] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.714] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.716] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.717] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.714] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.721] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.722] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.723] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.722] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.725] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.729] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.730] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.732] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.734] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.735] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.737] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.739] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:16.765] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.601] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.591] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.600] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.591] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.621] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.611] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.612] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 15:24:18.611] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.612] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 15:24:18.626] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.623] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 15:24:18.632] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 15:24:18.627] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 15:24:18.633] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 15:24:18.636] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 15:24:18.638] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 15:24:18.626] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 15:24:18.611] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.613] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 15:24:18.644] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 15:24:18.646] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 15:24:18.611] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 15:24:18.612] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 15:24:18.646] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 15:24:18.649] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 15:24:18.689] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 15:24:18.691] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 15:24:18.697] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 15:24:18.713] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 15:24:18.713] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 15:24:18.716] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 15:24:18.719] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 15:24:18.720] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 15:24:18.721] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 15:24:18.723] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 15:24:18.890] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 15:24:18.894] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 15:24:18.906] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 15:24:18.906] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 15:24:18.911] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 15:24:18.931] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 15:24:18.934] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 15:24:18.910] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 15:24:18.893] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 15:24:18.897] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 15:24:58.199] [INFO] [default] - Process:10184 is processing
+[2017-05-22 15:24:58.286] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'Puk2gJMTATPqrRi5zN-Lg42xP6pel32m';
+[2017-05-22 15:24:58.316] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'Puk2gJMTATPqrRi5zN-Lg42xP6pel32m';
+[2017-05-22 15:24:58.320] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:24:58.328] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('Puk2gJMTATPqrRi5zN-Lg42xP6pel32m','2017-05-22 07:34:58','{\"cookie\":{\"originalMaxAge\":600000,\"expires\":\"2017-05-22T07:34:58.223Z\",\"httpOnly\":true,\"path\":\"/\"}}','2017-05-22 07:24:58','2017-05-22 07:24:58');
+[2017-05-22 15:24:58.320] [INFO] [default] - user:[::1] open login.html
+[2017-05-22 15:24:58.429] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:24:58.438] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI','2017-05-22 07:34:58','{\"cookie\":{\"originalMaxAge\":600000,\"expires\":\"2017-05-22T07:34:58.422Z\",\"httpOnly\":true,\"path\":\"/\"}}','2017-05-22 07:24:58','2017-05-22 07:24:58');
+[2017-05-22 15:25:00.139] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:25:00.333] [INFO] [default] - Process:10184 is processing
+[2017-05-22 15:25:00.357] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:35:00',`updatedAt`='2017-05-22 07:25:00' WHERE `sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI'
+[2017-05-22 15:25:00.376] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:25:00.627] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:25:00.634] [INFO] [default] - user:[::1] open login.html
+[2017-05-22 15:25:00.661] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:35:00',`updatedAt`='2017-05-22 07:25:00' WHERE `sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI'
+[2017-05-22 15:25:03.803] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:25:03'
+[2017-05-22 15:25:07.051] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:25:07'
+[2017-05-22 15:25:07.351] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:25:07'
+[2017-05-22 15:25:07.557] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:25:07'
+[2017-05-22 15:25:11.639] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:25:11'
+[2017-05-22 15:25:28.400] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:25:28.406] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:25:28.409] [INFO] [default] - user:[::1] begin to login
+[2017-05-22 15:25:28.416] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'aa' AND `User`.`password` = 'b59c67bf196a4758191e42f76670ceba' LIMIT 1;
+[2017-05-22 15:25:29.444] [INFO] [default] - user:[::1] 登录失败！
+[2017-05-22 15:25:29.458] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:35:29',`updatedAt`='2017-05-22 07:25:29' WHERE `sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI'
+[2017-05-22 15:25:36.458] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:25:36.462] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:25:36.463] [INFO] [default] - user:[::1] begin to login
+[2017-05-22 15:25:36.465] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'aa' AND `User`.`password` = '698d51a19d8a121ce581499d7b701668' LIMIT 1;
+[2017-05-22 15:25:36.470] [INFO] [default] - user:[aa] login success
+[2017-05-22 15:25:36.475] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:25:36.481] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:35:36',`data`='{\"cookie\":{\"originalMaxAge\":600000,\"expires\":\"2017-05-22T07:35:36.472Z\",\"httpOnly\":true,\"path\":\"/\"},\"user\":\"aa\",\"corp\":\"code\"}',`updatedAt`='2017-05-22 07:25:36' WHERE `sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI'
+[2017-05-22 15:25:36.496] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:25:36.497] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:25:36.498] [INFO] [default] - user:[aa] open check.html
+[2017-05-22 15:25:36.531] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:35:36',`updatedAt`='2017-05-22 07:25:36' WHERE `sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI'
+[2017-05-22 15:25:36.726] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:25:36.728] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:25:36.754] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:35:36',`updatedAt`='2017-05-22 07:25:36' WHERE `sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI'
+[2017-05-22 15:25:39.356] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI';
+[2017-05-22 15:25:39.364] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:25:39.365] [INFO] [default] - user:[aa] open corporation.html
+[2017-05-22 15:25:39.366] [INFO] console - Executing (default): SELECT c.code, c.name, c.state, d.address, d.linkman, d.tel, d.mobile FROM corporations c, corpdetails d WHERE c.code=d.code
+[2017-05-22 15:25:39.451] [INFO] [default] - user:[aa] corporation.html initialize 
+[2017-05-22 15:25:39.542] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:35:39',`updatedAt`='2017-05-22 07:25:39' WHERE `sid` = '7mYxjgAAf-zZRTk30L7MLS20FVSSqOPI'
+[2017-05-22 15:26:03.739] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:26:03'
+[2017-05-22 15:26:07.063] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:26:07'
+[2017-05-22 15:26:07.362] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:26:07'
+[2017-05-22 15:26:07.595] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:26:07'
+[2017-05-22 15:26:11.625] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:26:11'
+[2017-05-22 15:26:44.427] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:26:44.501] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:26:44.527] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5','2017-05-22 07:36:44','{\"cookie\":{\"originalMaxAge\":600000,\"expires\":\"2017-05-22T07:36:44.443Z\",\"httpOnly\":true,\"path\":\"/\"}}','2017-05-22 07:26:44','2017-05-22 07:26:44');
+[2017-05-22 15:26:44.598] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:26:44.603] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:26:44.603] [INFO] [default] - user:[::1] open login.html
+[2017-05-22 15:26:44.618] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:36:44',`updatedAt`='2017-05-22 07:26:44' WHERE `sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5'
+[2017-05-22 15:26:47.758] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:26:47.760] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:26:47.766] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:36:47',`updatedAt`='2017-05-22 07:26:47' WHERE `sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5'
+[2017-05-22 15:26:51.449] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:26:51.455] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:26:51.455] [INFO] [default] - user:[::1] begin to login
+[2017-05-22 15:26:51.459] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'bb' AND `User`.`password` = '698d51a19d8a121ce581499d7b701668' LIMIT 1;
+[2017-05-22 15:26:51.465] [INFO] [default] - user:[bb] login success
+[2017-05-22 15:26:51.468] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:26:51.475] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:36:51',`data`='{\"cookie\":{\"originalMaxAge\":600000,\"expires\":\"2017-05-22T07:36:51.466Z\",\"httpOnly\":true,\"path\":\"/\"},\"user\":\"bb\",\"corp\":\"xxxx\"}',`updatedAt`='2017-05-22 07:26:51' WHERE `sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5'
+[2017-05-22 15:26:51.511] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:26:51.513] [INFO] [default] - Process:10224 is processing
+[2017-05-22 15:26:51.513] [INFO] [default] - user:[bb] open check.html
+[2017-05-22 15:26:51.520] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:36:51',`updatedAt`='2017-05-22 07:26:51' WHERE `sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5'
+[2017-05-22 15:26:51.705] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:26:51.713] [INFO] [default] - Process:10184 is processing
+[2017-05-22 15:26:51.780] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:36:51',`updatedAt`='2017-05-22 07:26:51' WHERE `sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5'
+[2017-05-22 15:26:54.518] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:26:54.521] [INFO] [default] - Process:10184 is processing
+[2017-05-22 15:26:54.522] [INFO] [default] - user:[bb] open coupon.html
+[2017-05-22 15:26:54.524] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat`;
+[2017-05-22 15:26:54.536] [INFO] console - Executing (default): SELECT `code`, `name` FROM `Corporations` AS `Corporation`;
+[2017-05-22 15:26:54.540] [ERROR] [default] - user:[bb] coupon.html initialize
+[2017-05-22 15:26:54.624] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:36:54',`updatedAt`='2017-05-22 07:26:54' WHERE `sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5'
+[2017-05-22 15:27:03.754] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:27:03'
+[2017-05-22 15:27:07.056] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:27:07'
+[2017-05-22 15:27:07.360] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:27:07'
+[2017-05-22 15:27:07.579] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:27:07'
+[2017-05-22 15:27:11.656] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:27:11'
+[2017-05-22 15:27:46.752] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:27:46.753] [INFO] [default] - Process:10184 is processing
+[2017-05-22 15:27:46.758] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:37:46',`updatedAt`='2017-05-22 07:27:46' WHERE `sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5'
+[2017-05-22 15:27:52.878] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5';
+[2017-05-22 15:27:52.881] [INFO] [default] - Process:10184 is processing
+[2017-05-22 15:27:52.881] [INFO] [default] - user:[bb] open user.html
+[2017-05-22 15:27:52.883] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User`;
+[2017-05-22 15:27:52.886] [INFO] console - Executing (default): SELECT `code`, `name` FROM `Corporations` AS `Corporation`;
+[2017-05-22 15:27:52.900] [INFO] [default] - user:[bb] user.html initialize
+[2017-05-22 15:27:52.938] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 07:37:52',`updatedAt`='2017-05-22 07:27:52' WHERE `sid` = 'LIWPthtSBrmyTJbeEfxIf8JmoIFtrLP5'
+[2017-05-22 15:28:03.738] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:28:03'
+[2017-05-22 15:28:07.053] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:28:07'
+[2017-05-22 15:28:07.359] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:28:07'
+[2017-05-22 15:28:07.590] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:28:07'
+[2017-05-22 15:28:11.626] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:28:11'
+[2017-05-22 15:29:03.755] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:29:03'
+[2017-05-22 15:29:07.040] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:29:07'
+[2017-05-22 15:29:07.362] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:29:07'
+[2017-05-22 15:29:07.568] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:29:07'
+[2017-05-22 15:29:11.661] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:29:11'
+[2017-05-22 15:30:03.758] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:30:03'
+[2017-05-22 15:30:07.041] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:30:07'
+[2017-05-22 15:30:07.366] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:30:07'
+[2017-05-22 15:30:07.567] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:30:07'
+[2017-05-22 15:30:11.647] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:30:11'
+[2017-05-22 15:31:03.748] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:31:03'
+[2017-05-22 15:31:07.188] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:31:07'
+[2017-05-22 15:31:07.366] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:31:07'
+[2017-05-22 15:31:07.572] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:31:07'
+[2017-05-22 15:31:11.650] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:31:11'
+[2017-05-22 15:32:03.759] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:32:03'
+[2017-05-22 15:32:07.042] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:32:07'
+[2017-05-22 15:32:07.407] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:32:07'
+[2017-05-22 15:32:07.573] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:32:07'
+[2017-05-22 15:32:11.641] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:32:11'
+[2017-05-22 15:33:03.774] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:33:03'
+[2017-05-22 15:33:07.047] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:33:07'
+[2017-05-22 15:33:07.381] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:33:07'
+[2017-05-22 15:33:07.576] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:33:07'
+[2017-05-22 15:33:11.657] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:33:11'
+[2017-05-22 15:34:03.753] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:34:03'
+[2017-05-22 15:34:07.070] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:34:07'
+[2017-05-22 15:34:07.381] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:34:07'
+[2017-05-22 15:34:07.584] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:34:07'
+[2017-05-22 15:34:11.649] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:34:11'
+[2017-05-22 15:35:03.788] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:35:03'
+[2017-05-22 15:35:07.063] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:35:07'
+[2017-05-22 15:35:07.371] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:35:07'
+[2017-05-22 15:35:07.590] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:35:07'
+[2017-05-22 15:35:11.643] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:35:11'
+[2017-05-22 15:36:03.762] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:36:03'
+[2017-05-22 15:36:07.062] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:36:07'
+[2017-05-22 15:36:07.405] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:36:07'
+[2017-05-22 15:36:07.605] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:36:07'
+[2017-05-22 15:36:11.652] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:36:11'
+[2017-05-22 15:37:03.763] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:37:03'
+[2017-05-22 15:37:07.066] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:37:07'
+[2017-05-22 15:37:07.376] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:37:07'
+[2017-05-22 15:37:07.609] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:37:07'
+[2017-05-22 15:37:11.651] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:37:11'
+[2017-05-22 15:38:03.781] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:38:03'
+[2017-05-22 15:38:07.063] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:38:07'
+[2017-05-22 15:38:07.403] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:38:07'
+[2017-05-22 15:38:07.621] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:38:07'
+[2017-05-22 15:38:11.697] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:38:11'
+[2017-05-22 15:39:03.781] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:39:03'
+[2017-05-22 15:39:07.094] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:39:07'
+[2017-05-22 15:39:07.378] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:39:07'
+[2017-05-22 15:39:07.609] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:39:07'
+[2017-05-22 15:39:11.654] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:39:11'
+[2017-05-22 15:40:03.790] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:40:03'
+[2017-05-22 15:40:07.070] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:40:07'
+[2017-05-22 15:40:07.407] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:40:07'
+[2017-05-22 15:40:07.605] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:40:07'
+[2017-05-22 15:40:11.660] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:40:11'
+[2017-05-22 15:41:03.789] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:41:03'
+[2017-05-22 15:41:07.060] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:41:07'
+[2017-05-22 15:41:07.399] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:41:07'
+[2017-05-22 15:41:07.599] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:41:07'
+[2017-05-22 15:41:11.685] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:41:11'
+[2017-05-22 15:42:03.773] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:42:03'
+[2017-05-22 15:42:07.086] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:42:07'
+[2017-05-22 15:42:07.409] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:42:07'
+[2017-05-22 15:42:07.600] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:42:07'
+[2017-05-22 15:42:11.682] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:42:11'
+[2017-05-22 15:43:03.793] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:43:03'
+[2017-05-22 15:43:07.072] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:43:07'
+[2017-05-22 15:43:07.392] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:43:07'
+[2017-05-22 15:43:07.621] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:43:07'
+[2017-05-22 15:43:11.680] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:43:11'
+[2017-05-22 15:44:03.793] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:44:03'
+[2017-05-22 15:44:07.072] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:44:07'
+[2017-05-22 15:44:07.405] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:44:07'
+[2017-05-22 15:44:07.610] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:44:07'
+[2017-05-22 15:44:11.666] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:44:11'
+[2017-05-22 15:45:03.780] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:45:03'
+[2017-05-22 15:45:07.150] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:45:07'
+[2017-05-22 15:45:07.421] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:45:07'
+[2017-05-22 15:45:07.732] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:45:07'
+[2017-05-22 15:45:11.669] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:45:11'
+[2017-05-22 15:46:03.795] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:46:03'
+[2017-05-22 15:46:07.080] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:46:07'
+[2017-05-22 15:46:07.393] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:46:07'
+[2017-05-22 15:46:07.607] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:46:07'
+[2017-05-22 15:46:11.691] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:46:11'
+[2017-05-22 15:47:03.796] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:47:03'
+[2017-05-22 15:47:07.083] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:47:07'
+[2017-05-22 15:47:07.396] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:47:07'
+[2017-05-22 15:47:07.610] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:47:07'
+[2017-05-22 15:47:11.693] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:47:11'
+[2017-05-22 15:48:03.789] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:48:03'
+[2017-05-22 15:48:07.094] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:48:07'
+[2017-05-22 15:48:07.401] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:48:07'
+[2017-05-22 15:48:07.614] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:48:07'
+[2017-05-22 15:48:11.686] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:48:11'
+[2017-05-22 15:49:03.811] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:49:03'
+[2017-05-22 15:49:07.087] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:49:07'
+[2017-05-22 15:49:07.405] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:49:07'
+[2017-05-22 15:49:07.611] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:49:07'
+[2017-05-22 15:49:11.702] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:49:11'
+[2017-05-22 15:50:03.804] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:50:03'
+[2017-05-22 15:50:07.103] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:50:07'
+[2017-05-22 15:50:07.405] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:50:07'
+[2017-05-22 15:50:07.618] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:50:07'
+[2017-05-22 15:50:11.688] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:50:11'
+[2017-05-22 15:51:03.873] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:51:03'
+[2017-05-22 15:51:07.099] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:51:07'
+[2017-05-22 15:51:07.400] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:51:07'
+[2017-05-22 15:51:07.639] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:51:07'
+[2017-05-22 15:51:11.680] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:51:11'
+[2017-05-22 15:52:03.817] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:52:03'
+[2017-05-22 15:52:07.103] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:52:07'
+[2017-05-22 15:52:07.416] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:52:07'
+[2017-05-22 15:52:07.625] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:52:07'
+[2017-05-22 15:52:11.704] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:52:11'
+[2017-05-22 15:53:03.821] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:53:03'
+[2017-05-22 15:53:07.126] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:53:07'
+[2017-05-22 15:53:07.405] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:53:07'
+[2017-05-22 15:53:07.656] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:53:07'
+[2017-05-22 15:53:11.685] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:53:11'
+[2017-05-22 15:54:03.804] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:54:03'
+[2017-05-22 15:54:07.135] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:54:07'
+[2017-05-22 15:54:07.410] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:54:07'
+[2017-05-22 15:54:07.743] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:54:07'
+[2017-05-22 15:54:11.690] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:54:11'
+[2017-05-22 15:55:03.817] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:55:03'
+[2017-05-22 15:55:07.124] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:55:07'
+[2017-05-22 15:55:07.413] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:55:07'
+[2017-05-22 15:55:07.641] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:55:07'
+[2017-05-22 15:55:11.697] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:55:11'
+[2017-05-22 15:56:03.804] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:56:03'
+[2017-05-22 15:56:07.131] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:56:07'
+[2017-05-22 15:56:07.433] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:56:07'
+[2017-05-22 15:56:07.641] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:56:07'
+[2017-05-22 15:56:11.690] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:56:11'
+[2017-05-22 15:57:03.829] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:57:03'
+[2017-05-22 15:57:07.115] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:57:07'
+[2017-05-22 15:57:07.444] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:57:07'
+[2017-05-22 15:57:07.639] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:57:07'
+[2017-05-22 15:57:11.695] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:57:11'
+[2017-05-22 15:58:03.812] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:58:03'
+[2017-05-22 15:58:07.178] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:58:07'
+[2017-05-22 15:58:07.417] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:58:07'
+[2017-05-22 15:58:07.652] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:58:07'
+[2017-05-22 15:58:11.698] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:58:11'
+[2017-05-22 15:59:03.824] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:59:03'
+[2017-05-22 15:59:07.127] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:59:07'
+[2017-05-22 15:59:07.419] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:59:07'
+[2017-05-22 15:59:07.644] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:59:07'
+[2017-05-22 15:59:11.703] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 07:59:11'
+[2017-05-22 16:00:03.835] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:00:03'
+[2017-05-22 16:00:07.123] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:00:07'
+[2017-05-22 16:00:07.437] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:00:07'
+[2017-05-22 16:00:07.670] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:00:07'
+[2017-05-22 16:00:11.703] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:00:11'
+[2017-05-22 16:01:03.823] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:01:03'
+[2017-05-22 16:01:07.140] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:01:07'
+[2017-05-22 16:01:07.421] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:01:07'
+[2017-05-22 16:01:07.666] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:01:07'
+[2017-05-22 16:01:11.716] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:01:11'
+[2017-05-22 16:02:03.840] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:02:03'
+[2017-05-22 16:02:07.133] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:02:07'
+[2017-05-22 16:02:07.427] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:02:07'
+[2017-05-22 16:02:07.674] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:02:07'
+[2017-05-22 16:02:11.726] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:02:11'
+[2017-05-22 16:03:03.825] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:03:03'
+[2017-05-22 16:03:07.126] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:03:07'
+[2017-05-22 16:03:07.444] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:03:07'
+[2017-05-22 16:03:07.668] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:03:07'
+[2017-05-22 16:03:11.757] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:03:11'
+[2017-05-22 16:04:03.825] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:04:03'
+[2017-05-22 16:04:07.149] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:04:07'
+[2017-05-22 16:04:07.430] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:04:07'
+[2017-05-22 16:04:07.692] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:04:07'
+[2017-05-22 16:04:11.723] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:04:11'
+[2017-05-22 16:05:03.870] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:05:03'
+[2017-05-22 16:05:07.137] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:05:07'
+[2017-05-22 16:05:07.447] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:05:07'
+[2017-05-22 16:05:07.680] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:05:07'
+[2017-05-22 16:05:11.776] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:05:11'
+[2017-05-22 16:06:03.955] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:06:03'
+[2017-05-22 16:06:07.131] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:06:07'
+[2017-05-22 16:06:07.431] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:06:07'
+[2017-05-22 16:06:07.687] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:06:07'
+[2017-05-22 16:06:11.754] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:06:11'
+[2017-05-22 16:07:03.832] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:07:03'
+[2017-05-22 16:07:07.148] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:07:07'
+[2017-05-22 16:07:07.457] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:07:07'
+[2017-05-22 16:07:07.680] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:07:07'
+[2017-05-22 16:07:11.727] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:07:11'
+[2017-05-22 16:08:03.834] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:08:03'
+[2017-05-22 16:08:07.153] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:08:07'
+[2017-05-22 16:08:07.436] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:08:07'
+[2017-05-22 16:08:07.690] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:08:07'
+[2017-05-22 16:08:11.727] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:08:11'
+[2017-05-22 16:09:03.849] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:09:03'
+[2017-05-22 16:09:07.141] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:09:07'
+[2017-05-22 16:09:07.448] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:09:07'
+[2017-05-22 16:09:07.686] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:09:07'
+[2017-05-22 16:09:11.745] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:09:11'
+[2017-05-22 16:10:03.857] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:10:03'
+[2017-05-22 16:10:07.165] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:10:07'
+[2017-05-22 16:10:07.440] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:10:07'
+[2017-05-22 16:10:07.684] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:10:07'
+[2017-05-22 16:10:11.745] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:10:11'
+[2017-05-22 16:11:03.855] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:11:03'
+[2017-05-22 16:11:07.144] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:11:07'
+[2017-05-22 16:11:07.444] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:11:07'
+[2017-05-22 16:11:07.687] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:11:07'
+[2017-05-22 16:11:11.748] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:11:11'
+[2017-05-22 16:12:03.846] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:12:03'
+[2017-05-22 16:12:07.154] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:12:07'
+[2017-05-22 16:12:07.445] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:12:07'
+[2017-05-22 16:12:07.705] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:12:07'
+[2017-05-22 16:12:11.752] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:12:11'
+[2017-05-22 16:13:03.868] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:13:03'
+[2017-05-22 16:13:07.144] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:13:07'
+[2017-05-22 16:13:07.455] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:13:07'
+[2017-05-22 16:13:07.695] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:13:07'
+[2017-05-22 16:13:11.737] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:13:11'
+[2017-05-22 16:14:03.861] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:14:03'
+[2017-05-22 16:14:07.151] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:14:07'
+[2017-05-22 16:14:07.457] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:14:07'
+[2017-05-22 16:14:07.731] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:14:07'
+[2017-05-22 16:14:11.741] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:14:11'
+[2017-05-22 16:15:03.847] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:15:03'
+[2017-05-22 16:15:07.169] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:15:07'
+[2017-05-22 16:15:07.466] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:15:07'
+[2017-05-22 16:15:07.709] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:15:07'
+[2017-05-22 16:15:11.740] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:15:11'
+[2017-05-22 16:16:03.873] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:16:03'
+[2017-05-22 16:16:07.155] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:16:07'
+[2017-05-22 16:16:07.476] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:16:07'
+[2017-05-22 16:16:07.759] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:16:07'
+[2017-05-22 16:16:11.741] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:16:11'
+[2017-05-22 16:17:03.888] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:17:03'
+[2017-05-22 16:17:07.174] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:17:07'
+[2017-05-22 16:17:07.456] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:17:07'
+[2017-05-22 16:17:07.696] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:17:07'
+[2017-05-22 16:17:11.751] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:17:11'
+[2017-05-22 16:18:03.877] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:18:03'
+[2017-05-22 16:18:07.156] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:18:07'
+[2017-05-22 16:18:07.463] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:18:07'
+[2017-05-22 16:18:07.699] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:18:07'
+[2017-05-22 16:18:11.753] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:18:11'
+[2017-05-22 16:19:03.874] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:19:03'
+[2017-05-22 16:19:07.155] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:19:07'
+[2017-05-22 16:19:07.476] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:19:07'
+[2017-05-22 16:19:07.703] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:19:07'
+[2017-05-22 16:19:11.758] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:19:11'
+[2017-05-22 16:20:03.882] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:20:03'
+[2017-05-22 16:20:07.168] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:20:07'
+[2017-05-22 16:20:07.465] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:20:07'
+[2017-05-22 16:20:07.708] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:20:07'
+[2017-05-22 16:20:11.759] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:20:11'
+[2017-05-22 16:21:03.862] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:21:03'
+[2017-05-22 16:21:07.189] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:21:07'
+[2017-05-22 16:21:07.466] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:21:07'
+[2017-05-22 16:21:07.724] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:21:07'
+[2017-05-22 16:21:11.838] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:21:11'
+[2017-05-22 16:22:03.877] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:22:03'
+[2017-05-22 16:22:07.165] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:22:07'
+[2017-05-22 16:22:07.503] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:22:07'
+[2017-05-22 16:22:07.709] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:22:07'
+[2017-05-22 16:22:11.760] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:22:11'
+[2017-05-22 16:23:03.887] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:23:03'
+[2017-05-22 16:23:07.187] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:23:07'
+[2017-05-22 16:23:07.537] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:23:07'
+[2017-05-22 16:23:07.708] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:23:07'
+[2017-05-22 16:23:11.794] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:23:11'
+[2017-05-22 16:24:03.880] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:24:03'
+[2017-05-22 16:24:07.209] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:24:07'
+[2017-05-22 16:24:07.492] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:24:07'
+[2017-05-22 16:24:07.723] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:24:07'
+[2017-05-22 16:24:11.792] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:24:11'
+[2017-05-22 16:25:03.931] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:25:03'
+[2017-05-22 16:25:07.212] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:25:07'
+[2017-05-22 16:25:07.773] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:25:07'
+[2017-05-22 16:25:07.507] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:25:07'
+[2017-05-22 16:25:11.819] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:25:11'
+[2017-05-22 16:26:03.899] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:26:03'
+[2017-05-22 16:26:07.218] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:26:07'
+[2017-05-22 16:26:07.486] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:26:07'
+[2017-05-22 16:26:07.719] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:26:07'
+[2017-05-22 16:26:11.827] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:26:11'
+[2017-05-22 16:27:03.920] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:27:03'
+[2017-05-22 16:27:07.195] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:27:07'
+[2017-05-22 16:27:07.506] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:27:07'
+[2017-05-22 16:27:07.715] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:27:07'
+[2017-05-22 16:27:11.798] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:27:11'
+[2017-05-22 16:28:03.959] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:28:03'
+[2017-05-22 16:28:07.197] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:28:07'
+[2017-05-22 16:28:07.497] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:28:07'
+[2017-05-22 16:28:07.715] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:28:07'
+[2017-05-22 16:28:11.820] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:28:11'
+[2017-05-22 16:29:03.907] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:29:03'
+[2017-05-22 16:29:07.218] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:29:07'
+[2017-05-22 16:29:07.496] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:29:07'
+[2017-05-22 16:29:07.721] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:29:07'
+[2017-05-22 16:29:11.809] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:29:11'
+[2017-05-22 16:30:03.905] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:30:03'
+[2017-05-22 16:30:07.232] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:30:07'
+[2017-05-22 16:30:07.519] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:30:07'
+[2017-05-22 16:30:07.725] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:30:07'
+[2017-05-22 16:30:11.803] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:30:11'
+[2017-05-22 16:31:03.894] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:31:03'
+[2017-05-22 16:31:07.227] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:31:07'
+[2017-05-22 16:31:07.516] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:31:07'
+[2017-05-22 16:31:07.723] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:31:07'
+[2017-05-22 16:31:11.933] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:31:11'
+[2017-05-22 16:31:43.873] [INFO] [default] - Process:10184 is processing
+[2017-05-22 16:31:44.826] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:31:45.759] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU','2017-05-22 08:41:44','{\"cookie\":{\"originalMaxAge\":599961,\"expires\":\"2017-05-22T08:41:44.176Z\",\"httpOnly\":true,\"path\":\"/\"}}','2017-05-22 08:31:45','2017-05-22 08:31:45');
+[2017-05-22 16:31:48.031] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:31:48.374] [INFO] [default] - Process:10224 is processing
+[2017-05-22 16:31:48.399] [INFO] [default] - user:[::1] open login.html
+[2017-05-22 16:31:49.967] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:41:49',`updatedAt`='2017-05-22 08:31:49' WHERE `sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU'
+[2017-05-22 16:32:03.936] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:32:03'
+[2017-05-22 16:32:07.220] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:32:07'
+[2017-05-22 16:32:07.499] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:32:07'
+[2017-05-22 16:32:07.767] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:32:07'
+[2017-05-22 16:32:11.816] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:32:11'
+[2017-05-22 16:32:20.606] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:32:20.849] [INFO] [default] - Process:7212 is processing
+[2017-05-22 16:32:20.874] [INFO] [default] - user:[::1] begin to login
+[2017-05-22 16:32:20.883] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'aa' AND `User`.`password` = '698d51a19d8a121ce581499d7b701668' LIMIT 1;
+[2017-05-22 16:32:21.362] [INFO] [default] - user:[aa] login success
+[2017-05-22 16:32:21.493] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:32:21.638] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:42:21',`data`='{\"cookie\":{\"originalMaxAge\":599961,\"expires\":\"2017-05-22T08:42:21.393Z\",\"httpOnly\":true,\"path\":\"/\"},\"user\":\"aa\",\"corp\":\"code\"}',`updatedAt`='2017-05-22 08:32:21' WHERE `sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU'
+[2017-05-22 16:32:21.710] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:32:21.711] [INFO] [default] - Process:7212 is processing
+[2017-05-22 16:32:21.712] [INFO] [default] - user:[aa] open check.html
+[2017-05-22 16:32:22.024] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:42:21',`updatedAt`='2017-05-22 08:32:22' WHERE `sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU'
+[2017-05-22 16:33:03.285] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:33:03.301] [INFO] [default] - Process:7212 is processing
+[2017-05-22 16:33:03.302] [INFO] [default] - user:[aa] open check.html
+[2017-05-22 16:33:03.316] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:43:03',`updatedAt`='2017-05-22 08:33:03' WHERE `sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU'
+[2017-05-22 16:33:03.908] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:33:03'
+[2017-05-22 16:33:07.232] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:33:07'
+[2017-05-22 16:33:07.511] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:33:07'
+[2017-05-22 16:33:07.725] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:33:07'
+[2017-05-22 16:33:11.809] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:33:11'
+[2017-05-22 16:33:15.314] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:33:15.317] [INFO] [default] - Process:7212 is processing
+[2017-05-22 16:33:15.317] [INFO] [default] - user:[aa] open check.html
+[2017-05-22 16:33:15.331] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:43:15',`updatedAt`='2017-05-22 08:33:15' WHERE `sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU'
+[2017-05-22 16:34:03.982] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:34:03'
+[2017-05-22 16:34:07.220] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:34:07'
+[2017-05-22 16:34:07.544] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:34:07'
+[2017-05-22 16:34:07.734] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:34:07'
+[2017-05-22 16:34:11.813] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:34:11'
+[2017-05-22 16:35:03.934] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:35:03'
+[2017-05-22 16:35:07.235] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:35:07'
+[2017-05-22 16:35:07.511] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:35:07'
+[2017-05-22 16:35:07.752] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:35:07'
+[2017-05-22 16:35:11.812] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:35:11'
+[2017-05-22 16:36:03.934] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:36:03'
+[2017-05-22 16:36:07.209] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:36:07'
+[2017-05-22 16:36:07.620] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:36:07'
+[2017-05-22 16:36:07.751] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:36:07'
+[2017-05-22 16:36:11.841] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:36:11'
+[2017-05-22 16:37:03.905] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:37:03'
+[2017-05-22 16:37:07.232] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:37:07'
+[2017-05-22 16:37:07.613] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:37:07'
+[2017-05-22 16:37:07.737] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:37:07'
+[2017-05-22 16:37:11.818] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:37:11'
+[2017-05-22 16:38:35.007] [INFO] [default] - Worker 2 pid:9072 started
+[2017-05-22 16:38:33.841] [INFO] [default] - Worker 4 pid:7200 started
+[2017-05-22 16:38:33.365] [INFO] [default] - Worker 1 pid:9460 started
+[2017-05-22 16:38:33.752] [INFO] [default] - Worker 3 pid:6900 started
+[2017-05-22 16:38:30.500] [INFO] [default] - Master 8536 is running
+[2017-05-22 16:38:30.564] [INFO] [default] - [Worker]1forked
+[2017-05-22 16:38:30.669] [INFO] [default] - [Worker]2forked
+[2017-05-22 16:38:30.760] [INFO] [default] - [Worker]3forked
+[2017-05-22 16:38:30.874] [INFO] [default] - [Worker]4forked
+[2017-05-22 16:38:35.632] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:35.633] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:35.633] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:35.653] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:35.725] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:35.771] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:35.771] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:35.796] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.418] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.419] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.428] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.431] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.422] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.433] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.435] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:38:36.432] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:38:36.589] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:38:36.588] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:38:36.612] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:38:36.742] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:38:36.762] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:38:36.762] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.764] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:38:36.801] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.802] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.807] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.807] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.812] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.815] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.818] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.821] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.825] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.828] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.829] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.831] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:38:36.860] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.862] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:38:36.860] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.863] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.869] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:38:36.865] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.865] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.871] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.867] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.879] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:38:36.875] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.880] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:38:36.881] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:38:36.884] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:38:37.022] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:38:37.048] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:38:37.060] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:38:37.062] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:38:37.083] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:38:37.127] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:38:37.541] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:38:37.542] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:38:37.545] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:38:37.544] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:38:37.554] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:38:37.549] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:38:37.558] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:38:37.557] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:38:37.552] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:38:37.561] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:38:39.558] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:38:39.821] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:38:39.821] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:38:39.827] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:38:39.831] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:40:02.256] [INFO] [default] - Master 9872 is running
+[2017-05-22 16:40:02.309] [INFO] [default] - [Worker]1forked
+[2017-05-22 16:40:02.393] [INFO] [default] - [Worker]2forked
+[2017-05-22 16:40:02.496] [INFO] [default] - [Worker]3forked
+[2017-05-22 16:40:02.602] [INFO] [default] - [Worker]4forked
+[2017-05-22 16:40:02.807] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:02.811] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:02.816] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:02.818] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:02.821] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:02.824] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessionas` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:02.871] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:02.873] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:40:02.877] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:40:02.882] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:40:02.885] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:40:02.889] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:40:02.893] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:40:03.040] [INFO] console - Executing (default): SHOW INDEX FROM `Sessionas`
+[2017-05-22 16:40:05.263] [INFO] [default] - Worker 1 pid:9360 started
+[2017-05-22 16:40:05.320] [INFO] [default] - Worker 2 pid:7948 started
+[2017-05-22 16:40:05.502] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.504] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.510] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.514] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.516] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.523] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessionas` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.527] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.531] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:40:05.532] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:40:05.536] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:40:05.541] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:40:05.542] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:40:05.547] [INFO] console - Executing (default): SHOW INDEX FROM `Sessionas`
+[2017-05-22 16:40:05.549] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:40:05.593] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.595] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.597] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.603] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.604] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.612] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessionas` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.616] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.616] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:40:05.617] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:40:05.618] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:40:05.621] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:40:05.629] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:40:05.630] [INFO] console - Executing (default): SHOW INDEX FROM `Sessionas`
+[2017-05-22 16:40:05.633] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:40:05.517] [INFO] [default] - Worker 3 pid:6876 started
+[2017-05-22 16:40:05.715] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.715] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.716] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.716] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.717] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.726] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessionas` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.728] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.732] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:40:05.733] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:40:05.735] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:40:05.736] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:40:05.739] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:40:05.744] [INFO] console - Executing (default): SHOW INDEX FROM `Sessionas`
+[2017-05-22 16:40:05.746] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:40:05.831] [INFO] [default] - Worker 4 pid:1964 started
+[2017-05-22 16:40:05.981] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.981] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.981] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.982] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.990] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.996] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessionas` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.997] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:40:05.999] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:40:05.999] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:40:06.002] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:40:06.006] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:40:06.007] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:40:06.012] [INFO] console - Executing (default): SHOW INDEX FROM `Sessionas`
+[2017-05-22 16:40:06.012] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:41:01.877] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:41:02.566] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:42:02.242] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:42:02'
+[2017-05-22 16:42:02.255] [WARN] console - Unhandled rejection SequelizeDatabaseError: ER_NO_SUCH_TABLE: Table 'catch.sessions' doesn't exist
+    at Query.formatError (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:175:14)
+    at Query._callback (E:\NodejsWorkspace\catch\node_modules\sequelize\lib\dialects\mysql\query.js:49:21)
+    at Query.Sequence.end (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Sequence.js:86:24)
+    at Query.ErrorPacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\sequences\Query.js:88:8)
+    at Protocol._parsePacket (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (E:\NodejsWorkspace\catch\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (E:\NodejsWorkspace\catch\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:188:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+[2017-05-22 16:42:05.315] [INFO] [default] - Master 9988 is running
+[2017-05-22 16:42:05.345] [INFO] [default] - [Worker]1forked
+[2017-05-22 16:42:05.452] [INFO] [default] - [Worker]2forked
+[2017-05-22 16:42:05.546] [INFO] [default] - [Worker]3forked
+[2017-05-22 16:42:05.651] [INFO] [default] - [Worker]4forked
+[2017-05-22 16:42:05.858] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:05.861] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:05.864] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:05.866] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:05.869] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:05.872] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:05.874] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:05.877] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:42:05.881] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:42:05.885] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:42:05.887] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:42:05.959] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:42:05.964] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:42:05.966] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:42:07.858] [INFO] [default] - Worker 1 pid:9700 started
+[2017-05-22 16:42:08.086] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.088] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.089] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.093] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.094] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.118] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.127] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.128] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:42:08.137] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:42:08.138] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:42:08.141] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:42:08.143] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:42:08.148] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:42:08.163] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:42:08.143] [INFO] [default] - Worker 2 pid:5152 started
+[2017-05-22 16:42:08.159] [INFO] [default] - Worker 3 pid:6032 started
+[2017-05-22 16:42:08.351] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.352] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.356] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.356] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.359] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.360] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.363] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.364] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.371] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.367] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.374] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.378] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.372] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.379] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:42:08.384] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:42:08.391] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:42:08.392] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:42:08.396] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:42:08.399] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:42:08.402] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:42:08.374] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.383] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:42:08.389] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:42:08.391] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:42:08.397] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:42:08.401] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:42:08.408] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:42:08.410] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:42:08.555] [INFO] [default] - Worker 4 pid:9480 started
+[2017-05-22 16:42:08.694] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.696] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.698] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.699] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.699] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.701] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.706] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-05-22 16:42:08.708] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-05-22 16:42:08.709] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-05-22 16:42:08.711] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-05-22 16:42:08.712] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-05-22 16:42:08.716] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-05-22 16:42:08.717] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-05-22 16:42:08.723] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-05-22 16:42:20.830] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:42:20.838] [INFO] [default] - Process:9480 is processing
+[2017-05-22 16:42:20.869] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'k8tdV8o5DUNMKOFIWmRekSx13AmN8XQU';
+[2017-05-22 16:42:20.870] [INFO] [default] - Process:9480 is processing
+[2017-05-22 16:42:20.872] [INFO] [default] - user:[::1] open login.html
+[2017-05-22 16:42:25.569] [INFO] [default] - Process:9480 is processing
+[2017-05-22 16:42:25.569] [INFO] [default] - user:[::1] begin to login
+[2017-05-22 16:42:25.571] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'aa' AND `User`.`password` = '698d51a19d8a121ce581499d7b701668' LIMIT 1;
+[2017-05-22 16:42:25.574] [INFO] [default] - user:[aa] login success
+[2017-05-22 16:42:25.580] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD';
+[2017-05-22 16:42:25.647] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD','2017-05-22 08:52:25','{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"user\":\"aa\",\"corp\":\"code\"}','2017-05-22 08:42:25','2017-05-22 08:42:25');
+[2017-05-22 16:42:25.693] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD';
+[2017-05-22 16:42:25.696] [INFO] [default] - Process:9480 is processing
+[2017-05-22 16:42:25.696] [INFO] [default] - user:[aa] open check.html
+[2017-05-22 16:42:25.756] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:52:25',`updatedAt`='2017-05-22 08:42:25' WHERE `sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD'
+[2017-05-22 16:42:38.392] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD';
+[2017-05-22 16:42:38.398] [INFO] [default] - Process:5152 is processing
+[2017-05-22 16:42:38.399] [INFO] [default] - user:[aa] open coupon.html
+[2017-05-22 16:42:38.399] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat`;
+[2017-05-22 16:42:38.528] [INFO] console - Executing (default): SELECT `code`, `name` FROM `Corporations` AS `Corporation`;
+[2017-05-22 16:42:38.535] [ERROR] [default] - user:[aa] coupon.html initialize
+[2017-05-22 16:42:38.683] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:52:38',`updatedAt`='2017-05-22 08:42:38' WHERE `sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD'
+[2017-05-22 16:42:49.059] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD';
+[2017-05-22 16:42:49.062] [INFO] [default] - Process:5152 is processing
+[2017-05-22 16:42:49.062] [INFO] [default] - user:[aa] open coupon.html
+[2017-05-22 16:42:49.063] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `totalnum`, `usednum`, `createdAt`, `updatedAt` FROM `Couponstats` AS `Couponstat`;
+[2017-05-22 16:42:49.070] [INFO] console - Executing (default): SELECT `code`, `name` FROM `Corporations` AS `Corporation`;
+[2017-05-22 16:42:49.072] [ERROR] [default] - user:[aa] coupon.html initialize
+[2017-05-22 16:42:49.100] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:52:49',`updatedAt`='2017-05-22 08:42:49' WHERE `sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD'
+[2017-05-22 16:43:02.429] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD';
+[2017-05-22 16:43:02.431] [INFO] [default] - Process:5152 is processing
+[2017-05-22 16:43:02.431] [INFO] [default] - user:[aa] open check.html
+[2017-05-22 16:43:02.437] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:53:02',`updatedAt`='2017-05-22 08:43:02' WHERE `sid` = 'e4j30Z41rz0pbeuH3mukRs9-NI3GQUVD'
+[2017-05-22 16:43:31.420] [INFO] [default] - Process:5152 is processing
+[2017-05-22 16:43:31.516] [INFO] [default] - Process:5152 is processing
+[2017-05-22 16:43:31.517] [INFO] [default] - user:[::1] open login.html
+[2017-05-22 16:43:44.079] [INFO] [default] - Process:5152 is processing
+[2017-05-22 16:43:44.079] [INFO] [default] - user:[::1] begin to login
+[2017-05-22 16:43:44.084] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'bb' AND `User`.`password` = '698d51a19d8a121ce581499d7b701668' LIMIT 1;
+[2017-05-22 16:43:44.090] [INFO] [default] - user:[bb] login success
+[2017-05-22 16:43:44.095] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'K2ojnJLebPTaNjdIONWgdZh6Hy1UUywY';
+[2017-05-22 16:43:44.101] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('K2ojnJLebPTaNjdIONWgdZh6Hy1UUywY','2017-05-22 08:53:44','{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"user\":\"bb\",\"corp\":\"xxxx\"}','2017-05-22 08:43:44','2017-05-22 08:43:44');
+[2017-05-22 16:43:44.390] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'K2ojnJLebPTaNjdIONWgdZh6Hy1UUywY';
+[2017-05-22 16:43:44.392] [INFO] [default] - Process:5152 is processing
+[2017-05-22 16:43:44.394] [INFO] [default] - user:[bb] open check.html
+[2017-05-22 16:43:44.405] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:53:44',`updatedAt`='2017-05-22 08:43:44' WHERE `sid` = 'K2ojnJLebPTaNjdIONWgdZh6Hy1UUywY'
+[2017-05-22 16:44:05.289] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:44:05'
+[2017-05-22 16:44:07.796] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:44:07'
+[2017-05-22 16:44:08.024] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:44:08'
+[2017-05-22 16:44:08.067] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:44:08'
+[2017-05-22 16:44:08.515] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:44:08'
+[2017-05-22 16:45:09.017] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'K2ojnJLebPTaNjdIONWgdZh6Hy1UUywY';
+[2017-05-22 16:45:09.021] [INFO] [default] - Process:9480 is processing
+[2017-05-22 16:45:09.025] [INFO] console - Executing (default): SELECT `id`, `src`, `dest`, `couponcode`, `couponno`, `discount`, `customer`, `state`, `createdAt`, `updatedAt` FROM `Coupons` AS `Coupon` WHERE `Coupon`.`couponno` = 506552655052 LIMIT 1;
+[2017-05-22 16:45:09.083] [INFO] [default] - user:[bb] 优惠码无效！
+[2017-05-22 16:45:09.092] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-05-22 08:55:09',`updatedAt`='2017-05-22 08:45:09' WHERE `sid` = 'K2ojnJLebPTaNjdIONWgdZh6Hy1UUywY'
+[2017-05-22 16:46:05.263] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:46:05'
+[2017-05-22 16:46:07.748] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:46:07'
+[2017-05-22 16:46:08.014] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:46:08'
+[2017-05-22 16:46:08.046] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:46:08'
+[2017-05-22 16:46:08.495] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:46:08'
+[2017-05-22 16:48:05.294] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:48:05'
+[2017-05-22 16:48:07.736] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:48:07'
+[2017-05-22 16:48:08.034] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:48:08'
+[2017-05-22 16:48:08.046] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:48:08'
+[2017-05-22 16:48:08.492] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:48:08'
+[2017-05-22 16:50:05.284] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:50:05'
+[2017-05-22 16:50:07.756] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:50:07'
+[2017-05-22 16:50:08.028] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:50:08'
+[2017-05-22 16:50:08.050] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:50:08'
+[2017-05-22 16:50:08.496] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-05-22 08:50:08'

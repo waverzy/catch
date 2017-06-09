@@ -1,0 +1,50 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "catch",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "charset": "utf8",
+      "collate": "utf8_general_ci"
+    },
+    "sms_free_sign_name": "catch平台",
+    "validate_template": "SMS_69440052",
+    "notify_template": "SMS_70105272",
+    "index": 0,
+    "check": 1,
+    "generate": 2,
+    "partner": 3,
+    "corporation": 4,
+    "coupon": 5,
+    "user": 6,
+    "corprelation": 7
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "catch",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "catchuser",
+    "password": "",
+    "database": "catch",
+    "host": "rm-uf69h31pmxgsfn77y.mysql.rds.aliyuncs.com",
+    "port": "3306",
+    "dialect": "mysql",
+    "sms_free_sign_name": "catch平台",
+    "validate_template": "SMS_69440052",
+    "notify_template": "SMS_70105272",
+    "index": 0,
+    "check": 1,
+    "generate": 2,
+    "partner": 3,
+    "corporation": 4,
+    "coupon": 5,
+    "user": 6,
+    "corprelation": 7
+  }
+}

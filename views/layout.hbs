@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+</head>
+<body>
+<div class="container">
+    <ul class="nav nav-pills">
+        <li role="presentation" id="menu-index">
+            <a href="/index">Home</a>
+        </li>
+        <li role="presentation" id="menu-check">
+            <a href="/check">Check</a>
+        </li>
+        <li role="presentation" id="menu-generate">
+            <a href="/generate">Generate</a>
+        </li>
+        <li role="presentation" id="menu-partner">
+            <a href="/partner">Partner</a>
+        </li>
+        {{#if admin}}
+        <li role="presentation" class="dropdown" id="menu-manage">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Manage <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="/corporation">Corporations</a></li>
+                <li><a href="/coupon">Coupons</a></li>
+                <li><a href="/user">Users</a></li>
+                <li><a href="/corprelation">CorpRelations</a></li>
+            </ul>
+        </li>
+        {{/if}}
+        <li role="presentation" id="menu-logout" style="display: none">
+            <a href="#" id="a-logout">退出登录</a>
+        </li>
+    </ul>
+    {{{body}}}
+</div>
+<script src="javascripts/lib/require.js" data-main="javascripts/main.js"></script>
+</body>
+</html>

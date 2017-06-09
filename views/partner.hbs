@@ -1,0 +1,18 @@
+<div class="main-page table-responsive" id="partner">
+    <div class="panel panel-default">
+    {{#each corps}}
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img width="150px" height="150px" class="media-object" src="{{picture}}">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{name}}</h4>
+                <p>{{description}}</p>
+                <h5>地址：{{address}}</h5>
+            </div>
+        </div>
+    {{/each}}
+    </div>
+</div>
