@@ -2554,3 +2554,344 @@
 [2017-06-12 13:45:45.868] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 05:45:45'
 [2017-06-12 13:47:45.851] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 05:47:45'
 [2017-06-12 13:49:45.890] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 05:49:45'
+[2017-06-12 13:51:45.849] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 05:51:45'
+[2017-06-12 13:53:45.858] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 05:53:45'
+[2017-06-12 13:55:45.875] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 05:55:45'
+[2017-06-12 15:13:39.879] [INFO] console - Executing (default): DROP TABLE IF EXISTS `Sessions`;
+[2017-06-12 15:13:39.895] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corpdetails` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `address` VARCHAR(255), `linkman` VARCHAR(255), `tel` VARCHAR(255), `mobile` VARCHAR(255), `description` VARCHAR(2000), `picture` VARCHAR(255), `field` INTEGER, `fieldname` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corpdetails_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-12 15:13:39.913] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corporations` (`id` INTEGER auto_increment , `code` CHAR(4) NOT NULL UNIQUE, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Corporations_code_unique` (`code`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-12 15:13:39.922] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Corprelations` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `name` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-12 15:13:39.945] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Coupons` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `couponcode` VARCHAR(255) NOT NULL, `couponno` BIGINT, `discount` VARCHAR(255), `customer` VARCHAR(255), `state` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-12 15:13:40.237] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Couponstats` (`id` INTEGER auto_increment , `src` CHAR(4) NOT NULL, `dest` CHAR(4) NOT NULL, `totalnum` INTEGER, `usednum` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `compositeIndex` (`src`, `dest`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-12 15:13:40.239] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Fields` (`id` INTEGER NOT NULL , `name` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-12 15:13:40.304] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `corp` CHAR(4), `auth` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE `Users_name_unique` (`name`), PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-12 15:13:40.309] [INFO] console - Executing (default): SHOW INDEX FROM `Coupons`
+[2017-06-12 15:13:40.326] [INFO] console - Executing (default): SHOW INDEX FROM `Corprelations`
+[2017-06-12 15:13:40.334] [INFO] console - Executing (default): SHOW INDEX FROM `Couponstats`
+[2017-06-12 15:13:40.357] [INFO] console - Executing (default): SHOW INDEX FROM `Fields`
+[2017-06-12 15:13:40.359] [INFO] console - Executing (default): SHOW INDEX FROM `Corporations`
+[2017-06-12 15:13:40.419] [INFO] console - Executing (default): SHOW INDEX FROM `Corpdetails`
+[2017-06-12 15:13:40.442] [INFO] console - Executing (default): SHOW INDEX FROM `Users`
+[2017-06-12 15:13:40.446] [INFO] console - Executing (default): CREATE TABLE IF NOT EXISTS `Sessions` (`sid` VARCHAR(255) , `userId` VARCHAR(255), `expires` DATETIME, `data` VARCHAR(10000), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`sid`)) ENGINE=memory DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+[2017-06-12 15:13:40.796] [INFO] console - Executing (default): SHOW INDEX FROM `Sessions`
+[2017-06-12 15:13:49.572] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'RtqLG5A9QHaT2Y1k3uRB1coseCwrGU9q';
+[2017-06-12 15:13:49.588] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:49.622] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'RtqLG5A9QHaT2Y1k3uRB1coseCwrGU9q';
+[2017-06-12 15:13:49.644] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:49.644] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:13:49.951] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'RtqLG5A9QHaT2Y1k3uRB1coseCwrGU9q';
+[2017-06-12 15:13:49.952] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:49.963] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'RtqLG5A9QHaT2Y1k3uRB1coseCwrGU9q';
+[2017-06-12 15:13:49.966] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:49.967] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:13:52.456] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'RtqLG5A9QHaT2Y1k3uRB1coseCwrGU9q';
+[2017-06-12 15:13:52.458] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:52.462] [INFO] [default] - user:[::1] begin to login
+[2017-06-12 15:13:52.465] [INFO] console - Executing (default): SELECT `id`, `name`, `password`, `corp`, `auth`, `createdAt`, `updatedAt` FROM `Users` AS `User` WHERE `User`.`name` = 'admin' AND `User`.`password` = '202cb962ac59075b964b07152d234b70' LIMIT 1;
+[2017-06-12 15:13:52.500] [INFO] [default] - user:[admin] login success
+[2017-06-12 15:13:52.503] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:52.511] [INFO] console - Executing (default): INSERT INTO `Sessions` (`sid`,`expires`,`data`,`createdAt`,`updatedAt`) VALUES ('nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg','2017-06-12 07:23:52','{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"user\":\"admin\",\"corp\":\"admi\",\"auth\":\"111111111\"}','2017-06-12 07:13:52','2017-06-12 07:13:52');
+[2017-06-12 15:13:52.539] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:52.558] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:52.558] [INFO] [default] - user:[admin] open check.html
+[2017-06-12 15:13:52.595] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:23:52',`updatedAt`='2017-06-12 07:13:52' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:13:52.766] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:52.770] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:52.770] [ERROR] [default] - user:[admin] request /favicon.ico auth failed
+[2017-06-12 15:13:52.779] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:23:52',`updatedAt`='2017-06-12 07:13:52' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:13:52.801] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:52.803] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:52.804] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:13:52.810] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:23:52',`updatedAt`='2017-06-12 07:13:52' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:13:55.447] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:55.453] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:55.455] [INFO] [default] - user:[admin] open corprelation.html
+[2017-06-12 15:13:55.460] [INFO] console - Executing (default): SELECT `id`, `code`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corporations` AS `Corporation`;
+[2017-06-12 15:13:55.467] [INFO] [default] - user:[admin] corprelation.html initialize
+[2017-06-12 15:13:55.500] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:23:55',`updatedAt`='2017-06-12 07:13:55' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:13:55.610] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:55.616] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:55.616] [ERROR] [default] - user:[admin] request /favicon.ico auth failed
+[2017-06-12 15:13:55.628] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:23:55',`updatedAt`='2017-06-12 07:13:55' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:13:55.644] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:55.647] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:55.647] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:13:55.660] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:23:55',`updatedAt`='2017-06-12 07:13:55' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:13:55.717] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:55.718] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:55.719] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:13:55.719] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:13:55.726] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:13:55.732] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:13:55.732] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:13:55.733] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:13:55.833] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:13:55.836] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:23:55',`updatedAt`='2017-06-12 07:13:55' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:13:55.964] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:13:55.966] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:23:55',`updatedAt`='2017-06-12 07:13:55' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:14:05.271] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:14:05.294] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:14:05.294] [INFO] [default] - user:[admin] begin to insert relations
+[2017-06-12 15:14:05.299] [INFO] console - Executing (default): INSERT INTO `Corprelations` (`id`,`src`,`dest`,`name`,`state`,`createdAt`,`updatedAt`) VALUES (NULL,'wz','hgl','红高粱',true,'2017-06-12 07:14:05','2017-06-12 07:14:05');
+[2017-06-12 15:14:05.614] [INFO] [default] - user:[admin] insert finished 
+[2017-06-12 15:14:05.625] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:24:05',`updatedAt`='2017-06-12 07:14:05' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:14:05.643] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:14:05.647] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:14:05.648] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:14:05.648] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:14:05.651] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:14:05.653] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:14:05.653] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:14:05.654] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:14:05.656] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:14:05.660] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:24:05',`updatedAt`='2017-06-12 07:14:05' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:14:05.744] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:14:05.749] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:24:05',`updatedAt`='2017-06-12 07:14:05' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:14:16.975] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:14:16.978] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:14:16.979] [INFO] [default] - user:[admin] begin to delete relations
+[2017-06-12 15:14:16.981] [INFO] console - Executing (default): DELETE FROM `Corprelations` WHERE `src` = 'wz' AND `dest` IN ('undefined')
+[2017-06-12 15:14:16.983] [ERROR] [default] - user:[admin] Error: 数据不存在！
+    at E:\NodejsWorkspace\catch\routes\corprelation.js:79:23
+    at tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-12 15:14:16.988] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:24:16',`updatedAt`='2017-06-12 07:14:16' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:15:39.372] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 07:15:39'
+[2017-06-12 15:15:54.382] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:15:54.384] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:15:54.385] [INFO] [default] - user:[admin] begin to delete relations
+[2017-06-12 15:19:35.598] [INFO] console - Executing (default): DELETE FROM `Corprelations` WHERE `src` = 'wz' AND `dest` IN ('undefined')
+[2017-06-12 15:19:35.603] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 07:19:35'
+[2017-06-12 15:19:35.604] [ERROR] [default] - user:[admin] Error: 数据不存在！
+    at E:\NodejsWorkspace\catch\routes\corprelation.js:79:23
+    at tryCatcher (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:512:31)
+    at Promise._settlePromise (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:569:18)
+    at Promise._settlePromise0 (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:614:10)
+    at Promise._settlePromises (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\promise.js:693:18)
+    at Async._drainQueue (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:133:16)
+    at Async._drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:143:10)
+    at Immediate.Async.drainQueues (E:\NodejsWorkspace\catch\node_modules\bluebird\js\release\async.js:17:14)
+    at runCallback (timers.js:666:20)
+    at tryOnImmediate (timers.js:639:5)
+    at processImmediate [as _immediateCallback] (timers.js:611:5)
+[2017-06-12 15:19:35.614] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:35',`updatedAt`='2017-06-12 07:19:35' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:19:44.105] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:19:44.108] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:19:44.108] [INFO] [default] - user:[admin] open corprelation.html
+[2017-06-12 15:19:44.109] [INFO] console - Executing (default): SELECT `id`, `code`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corporations` AS `Corporation`;
+[2017-06-12 15:19:44.114] [INFO] [default] - user:[admin] corprelation.html initialize
+[2017-06-12 15:19:44.139] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:44',`updatedAt`='2017-06-12 07:19:44' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:19:44.198] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:19:44.200] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:19:44.200] [ERROR] [default] - user:[admin] request /favicon.ico auth failed
+[2017-06-12 15:19:44.206] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:44',`updatedAt`='2017-06-12 07:19:44' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:19:44.217] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:19:44.220] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:19:44.220] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:19:44.229] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:44',`updatedAt`='2017-06-12 07:19:44' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:19:44.321] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:19:44.325] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:19:44.326] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:19:44.327] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:19:44.329] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:19:44.332] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:19:44.332] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:19:44.333] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:19:44.341] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:19:44.348] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:44',`updatedAt`='2017-06-12 07:19:44' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:19:44.349] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:19:44.352] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:44',`updatedAt`='2017-06-12 07:19:44' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:19:48.489] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:19:48.497] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:19:48.522] [INFO] [default] - user:[admin] begin to delete relations
+[2017-06-12 15:19:48.523] [INFO] console - Executing (default): DELETE FROM `Corprelations` WHERE `src` = 'wz' AND `dest` IN ('code')
+[2017-06-12 15:19:48.651] [INFO] [default] - user:[admin] delete finished 
+[2017-06-12 15:19:48.657] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:48',`updatedAt`='2017-06-12 07:19:48' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:19:48.671] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:19:48.673] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:19:48.674] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:19:48.675] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:19:48.685] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:19:48.687] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:19:48.687] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:19:48.687] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:19:48.689] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:19:48.692] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:48',`updatedAt`='2017-06-12 07:19:48' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:19:48.695] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:19:48.698] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:29:48',`updatedAt`='2017-06-12 07:19:48' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:21:35.675] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 07:21:35'
+[2017-06-12 15:21:41.654] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:21:41.657] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:21:41.657] [INFO] [default] - user:[admin] open corprelation.html
+[2017-06-12 15:21:41.657] [INFO] console - Executing (default): SELECT `id`, `code`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corporations` AS `Corporation`;
+[2017-06-12 15:21:41.661] [INFO] [default] - user:[admin] corprelation.html initialize
+[2017-06-12 15:21:41.673] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:31:41',`updatedAt`='2017-06-12 07:21:41' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:21:41.724] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:21:41.726] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:21:41.726] [ERROR] [default] - user:[admin] request /favicon.ico auth failed
+[2017-06-12 15:21:41.730] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:31:41',`updatedAt`='2017-06-12 07:21:41' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:21:41.740] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:21:41.742] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:21:41.743] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:21:41.758] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:31:41',`updatedAt`='2017-06-12 07:21:41' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:21:41.842] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:21:41.844] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:21:41.844] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:21:41.844] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:21:41.869] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:21:41.882] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:21:41.886] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:31:41',`updatedAt`='2017-06-12 07:21:41' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:21:41.898] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:21:41.899] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:21:41.900] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:21:41.901] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:21:41.909] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:31:41',`updatedAt`='2017-06-12 07:21:41' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:14.058] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:14.078] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:14.079] [INFO] [default] - user:[admin] open corprelation.html
+[2017-06-12 15:22:14.081] [INFO] console - Executing (default): SELECT `id`, `code`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corporations` AS `Corporation`;
+[2017-06-12 15:22:14.084] [INFO] [default] - user:[admin] corprelation.html initialize
+[2017-06-12 15:22:14.097] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:14',`updatedAt`='2017-06-12 07:22:14' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:14.171] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:14.172] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:14.173] [ERROR] [default] - user:[admin] request /favicon.ico auth failed
+[2017-06-12 15:22:14.178] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:14',`updatedAt`='2017-06-12 07:22:14' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:14.185] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:14.187] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:14.187] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:22:14.200] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:14',`updatedAt`='2017-06-12 07:22:14' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:14.277] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:14.280] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:14.281] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:22:14.281] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:22:14.286] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:14.286] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:22:14.290] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:14',`updatedAt`='2017-06-12 07:22:14' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:14.292] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:14.292] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:22:14.296] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:22:14.297] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:22:14.301] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:14',`updatedAt`='2017-06-12 07:22:14' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:28.414] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:28.415] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:28.416] [INFO] [default] - user:[admin] open corprelation.html
+[2017-06-12 15:22:28.416] [INFO] console - Executing (default): SELECT `id`, `code`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corporations` AS `Corporation`;
+[2017-06-12 15:22:28.418] [INFO] [default] - user:[admin] corprelation.html initialize
+[2017-06-12 15:22:28.427] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:28',`updatedAt`='2017-06-12 07:22:28' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:28.511] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:28.514] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:28.514] [ERROR] [default] - user:[admin] request /favicon.ico auth failed
+[2017-06-12 15:22:28.517] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:28',`updatedAt`='2017-06-12 07:22:28' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:28.524] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:28.542] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:28.542] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:22:28.548] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:28',`updatedAt`='2017-06-12 07:22:28' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:28.634] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:28.638] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:28.638] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:22:28.640] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:22:28.643] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:28.644] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:22:28.647] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:28',`updatedAt`='2017-06-12 07:22:28' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:28.649] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:28.649] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:22:28.652] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:22:28.654] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:22:28.658] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:28',`updatedAt`='2017-06-12 07:22:28' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:33.510] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:33.512] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:33.513] [INFO] [default] - user:[admin] begin to delete relations
+[2017-06-12 15:22:33.514] [INFO] console - Executing (default): DELETE FROM `Corprelations` WHERE `src` = 'wz' AND `dest` IN ('hgl')
+[2017-06-12 15:22:33.607] [INFO] [default] - user:[admin] delete finished 
+[2017-06-12 15:22:33.612] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:33',`updatedAt`='2017-06-12 07:22:33' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:33.623] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:33.628] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:33.628] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:22:33.629] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:22:33.639] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:33.640] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:22:33.644] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:33',`updatedAt`='2017-06-12 07:22:33' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:33.645] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:33.646] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:22:33.648] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:22:33.655] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:22:33.663] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:33',`updatedAt`='2017-06-12 07:22:33' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:36.212] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:36.214] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:36.214] [INFO] [default] - user:[admin] open corprelation.html
+[2017-06-12 15:22:36.216] [INFO] console - Executing (default): SELECT `id`, `code`, `name`, `state`, `createdAt`, `updatedAt` FROM `Corporations` AS `Corporation`;
+[2017-06-12 15:22:36.219] [INFO] [default] - user:[admin] corprelation.html initialize
+[2017-06-12 15:22:36.240] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:36',`updatedAt`='2017-06-12 07:22:36' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:36.338] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:36.340] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:36.341] [ERROR] [default] - user:[admin] request /favicon.ico auth failed
+[2017-06-12 15:22:36.347] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:36',`updatedAt`='2017-06-12 07:22:36' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:36.369] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:36.371] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:36.372] [INFO] [default] - user:[::1] open login.html
+[2017-06-12 15:22:36.422] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:36',`updatedAt`='2017-06-12 07:22:36' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:36.476] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:36.477] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:36.477] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:22:36.478] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='wz')
+[2017-06-12 15:22:36.479] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:22:36.481] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:36',`updatedAt`='2017-06-12 07:22:36' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:22:36.484] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:22:36.486] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:22:36.486] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:22:36.487] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='wz'
+[2017-06-12 15:22:36.488] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:22:36.490] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:32:36',`updatedAt`='2017-06-12 07:22:36' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:23:17.477] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:23:17.482] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:23:17.482] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:23:17.483] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='admi')
+[2017-06-12 15:23:17.485] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:23:17.490] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:33:17',`updatedAt`='2017-06-12 07:23:17' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:23:21.975] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:23:21.976] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:23:21.977] [INFO] [default] - user:[admin] begin to insert relations
+[2017-06-12 15:23:21.980] [INFO] console - Executing (default): INSERT INTO `Corprelations` (`id`,`src`,`dest`,`name`,`state`,`createdAt`,`updatedAt`) VALUES (NULL,'admi','rx','rxg',true,'2017-06-12 07:23:21','2017-06-12 07:23:21'),(NULL,'admi','mjm','没见面',true,'2017-06-12 07:23:21','2017-06-12 07:23:21');
+[2017-06-12 15:23:22.061] [INFO] [default] - user:[admin] insert finished 
+[2017-06-12 15:23:22.065] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:33:22',`updatedAt`='2017-06-12 07:23:22' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:23:22.082] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:23:22.084] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:23:22.084] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:23:22.084] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='admi')
+[2017-06-12 15:23:22.154] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:23:22.154] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:23:22.157] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:33:22',`updatedAt`='2017-06-12 07:23:22' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:23:22.158] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:23:22.158] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:23:22.159] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='admi'
+[2017-06-12 15:23:22.161] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:23:22.164] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:33:22',`updatedAt`='2017-06-12 07:23:22' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:23:32.398] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:23:32.401] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:23:32.401] [INFO] [default] - user:[admin] begin to delete relations
+[2017-06-12 15:23:32.403] [INFO] console - Executing (default): DELETE FROM `Corprelations` WHERE `src` = 'admi' AND `dest` IN ('jbb', 'rx')
+[2017-06-12 15:23:32.559] [INFO] [default] - user:[admin] delete finished 
+[2017-06-12 15:23:32.569] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:33:32',`updatedAt`='2017-06-12 07:23:32' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:23:32.584] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:23:32.587] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:23:32.588] [INFO] [default] - user:[admin] begin to query unrelated corps
+[2017-06-12 15:23:32.588] [INFO] console - Executing (default): SELECT code, name FROM corporations WHERE state=true AND code NOT IN (SELECT dest FROM corprelations WHERE src='admi')
+[2017-06-12 15:23:32.590] [INFO] [default] - user:[admin] query unrelated corps finished
+[2017-06-12 15:23:32.593] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:33:32',`updatedAt`='2017-06-12 07:23:32' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:23:32.596] [INFO] console - Executing (default): SELECT `sid`, `expires`, `data`, `createdAt`, `updatedAt` FROM `Sessions` AS `Session` WHERE `Session`.`sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg';
+[2017-06-12 15:23:32.600] [INFO] [default] - Process:7744 is processing
+[2017-06-12 15:23:32.600] [INFO] [default] - user:[admin] begin to query related corps
+[2017-06-12 15:23:32.601] [INFO] console - Executing (default): SELECT dest, name FROM corprelations WHERE src='admi'
+[2017-06-12 15:23:32.602] [INFO] [default] - user:[admin] query related corps finished
+[2017-06-12 15:23:32.606] [INFO] console - Executing (default): UPDATE `Sessions` SET `expires`='2017-06-12 07:33:32',`updatedAt`='2017-06-12 07:23:32' WHERE `sid` = 'nOkBZqbPSO-DoCcDvY958jZDhgO4hwcg'
+[2017-06-12 15:23:35.613] [INFO] console - Executing (default): DELETE FROM `Sessions` WHERE `expires` < '2017-06-12 07:23:35'

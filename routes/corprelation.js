@@ -63,4 +63,31 @@ router.post('/insert', function (req, res) {
     }
 });
 
+router.post('/delete', function (req, res) {
+    logger.info('user:[' + req.session.user + '] begin to delete relations');
+    var relations = JSON.parse(req.body.relations), src = req.body.src;
+    if(relations instanceof Array && relations.length>0 && src) {
+        models.Corprelation.destroy({
+            where: {
+                src: src,
+                dest: {
+                    $in: relations
+                }
+            }
+        }).then(function(affectedRows) {
+            if(affectedRows < 1) {
+                throw new Error('数据不存在！');
+            }
+            logger.info('user:[' + req.session.user + '] delete finished ');
+            return res.send({'msg': 'success'});
+        }).catch(function (error) {
+            logger.error('user:[' + req.session.user + '] ' + error.stack);
+            return res.send({'msg': '错误:' + error.message});
+        });
+    } else {
+        logger.error('user:[' + req.session.user + '] 传递的机构列表或源机构不合法！');
+        return res.send({'msg': '传递内容不合法！'});
+    }
+});
+
 module.exports = router;
