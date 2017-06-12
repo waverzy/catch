@@ -21,25 +21,20 @@ define(['main'], function(main) {
             var selectedId = checkedRadio[0].id;//不能用逗号，非新定义selectedIdx
             selectedIdx = selectedId.substr(0, selectedId.length-1);
             $('.modal-title').text($('#'+selectedIdx+1).text());
-            $('#new-name').val($('#'+selectedIdx+1).text());
-            $('#new-password').val($('#'+selectedIdx+2).text());
-            $('#new-corp').val($('#'+selectedIdx+3).text());
-            $('#new-auth').val($('#'+selectedIdx+4).text());
+            $('#new-id').val($('#'+selectedIdx+1).text());
+            $('#new-name').val($('#'+selectedIdx+2).text());
 
             $('#editModal').modal('toggle');
         });
 
         $('.btn-save').on('click', function() {
-            var pwdStr = $('#new-password').val();
             main.$.ajax({
                 type:'post',
-                url:'/user/upsert',
+                url:'/field/upsert',
                 cache:false,
                 data:{
-                    name: $('#new-name').val(),
-                    password: pwdStr.length <= 20 ? $.md5(pwdStr) : pwdStr,
-                    corp: $('#new-corp').val(),
-                    auth: $('#new-auth').val(),
+                    id: $('#new-id').val(),
+                    name: $('#new-name').val()
                 },
                 success:function(output){
                     if(output.msg == 'success')
@@ -47,9 +42,7 @@ define(['main'], function(main) {
                         if(output.upsert) {
                             return window.location.reload();
                         }
-                        $('#'+selectedIdx+2).text($('#new-password').val());
-                        $('#'+selectedIdx+3).text($('#new-corp').val());
-                        $('#'+selectedIdx+4).text($('#new-auth').val());
+                        $('#'+selectedIdx+2).text($('#new-name').val());
                         $('#editModal').modal('toggle');
                     } else if (output.msg == 'logout') {
                         window.location.reload();
@@ -63,12 +56,37 @@ define(['main'], function(main) {
 
         $('.btn-insert').on('click', function() {
             $('.modal-title').text('新增');
+            $('#new-id').val('');
             $('#new-name').val('');
-            $('#new-password').val('');
-            $('#new-corp').val('');
-            $('#new-auth').val('');
-            $('#form-name').show();
+            $('#form-id').show();
             $('#editModal').modal('toggle');
+        });
+
+        $('.btn-delete').on('click', function() {
+            var checkedRadio = $('input[type="radio"]:checked');
+            if(checkedRadio.length !== 1) {
+                alert("请选择一条记录！");
+                return;
+            }
+            var selectedId = checkedRadio[0].id;//不能用逗号，非新定义selectedIdx
+            selectedIdx = selectedId.substr(0, selectedId.length-1);
+            main.$.ajax({
+                type:'post',
+                url:'/field/delete',
+                cache:false,
+                data:{
+                    id: $('#'+selectedIdx+1).text()
+                },
+                success:function(output){
+                    if(output.msg == 'success') {
+                        return window.location.reload();
+                    } else if (output.msg == 'logout') {
+                        window.location.reload();
+                    } else {
+                        alert(output.msg);
+                    }
+                }
+            });
         });
 
     }

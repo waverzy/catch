@@ -12,6 +12,16 @@ define(['main'], function(main) {
     var selectedIdx = 'sth1';
 
     function initWidget() {
+        $('.btn-detail').on('click', function() {
+            $('.th-state').toggle();
+            $('.th-linkman').toggle();
+            $('.th-tel').toggle();
+            $('.th-mobile').toggle();
+            $('.th-description').toggle();
+            $('.th-picture').toggle();
+            $('.th-field').toggle();
+        });
+
         $('.btn-edit').on('click', function() {
             var checkedRadio = $('input[type="radio"]:checked');
             if(checkedRadio.length !== 1) {
@@ -31,6 +41,7 @@ define(['main'], function(main) {
             $('#new-mobile').val($('#'+selectedIdx+7).text());
             $('#new-description').val($('#'+selectedIdx+8).text());
             $('#new-filename').val($('#'+selectedIdx+9).text());
+            $('#new-field').val($('#'+selectedIdx+10).attr('name'));
 
             $('#editModal').modal('toggle');
         });
@@ -78,6 +89,7 @@ define(['main'], function(main) {
             $('#new-tel').val('');
             $('#new-mobile').val('');
             $('#new-description').val('');
+            $('#new-field').val('');
             $('#form-code').show();
             $('#editModal').modal('toggle');
         });
@@ -98,7 +110,9 @@ define(['main'], function(main) {
                 tel: $('#new-tel').val(),
                 mobile: $('#new-mobile').val(),
                 description: $('#new-description').val(),
-                picture: $('#new-filename').val()
+                picture: $('#new-filename').val(),
+                field: $('#new-field').val(),
+                fieldname: $('#new-field').find("option:selected").text()
             },
             success:function(output){
                 if(output.msg == 'success')
@@ -114,6 +128,7 @@ define(['main'], function(main) {
                     $('#'+selectedIdx+7).text($('#new-mobile').val());
                     $('#'+selectedIdx+8).text($('#new-description').val());
                     $('#'+selectedIdx+9).text($('#new-filename').val());
+                    $('#'+selectedIdx+10).text($('#new-field').find("option:selected").text());
                     $('#editModal').modal('toggle');
                 } else if (output.msg == 'logout') {
                     window.location.reload();

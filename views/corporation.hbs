@@ -3,6 +3,7 @@
         <div class="panel-heading">
             <div class="corporation-title">对象管理</div>
             <div class="group-btn">
+            <button type="button" class="btn btn-default btn-info btn-detail">显示/隐藏</button>
             <button type="button" class="btn btn-default btn-info btn-edit">
                 修改
             </button>
@@ -12,16 +13,17 @@
         <table class="table table-condensed">
             <thead>
             <tr>
-                <th></th>
-                <th>代码</th>
+                <th width="5%"></th>
+                <th width="8%">代码</th>
                 <th>名称</th>
-                <th>状态</th>
+                <th class="th-state">状态</th>
                 <th>地址</th>
-                <th>联系人</th>
-                <th>座机</th>
-                <th>手机</th>
-                <th>介绍</th>
-                <th>图片</th>
+                <th class="th-linkman">联系人</th>
+                <th class="th-tel">座机</th>
+                <th class="th-mobile">手机</th>
+                <th class="th-description">介绍</th>
+                <th class="th-picture">图片</th>
+                <th class="th-field">行业</th>
             </tr>
             </thead>
             <tbody>
@@ -32,13 +34,14 @@
                     </th>
                     <th id="sth{{add @index 1}}1">{{code}}</th>
                     <th id="sth{{add @index 1}}2">{{name}}</th>
-                    <th id="sth{{add @index 1}}3">{{state}}</th>
+                    <th class="th-state" id="sth{{add @index 1}}3">{{state}}</th>
                     <th class="th-overflow" id="sth{{add @index 1}}4">{{address}}</th>
-                    <th id="sth{{add @index 1}}5">{{linkman}}</th>
-                    <th id="sth{{add @index 1}}6">{{tel}}</th>
-                    <th id="sth{{add @index 1}}7">{{mobile}}</th>
-                    <th class="th-overflow" id="sth{{add @index 1}}8">{{description}}</th>
-                    <th class="th-overflow" id="sth{{add @index 1}}9">{{picture}}</th>
+                    <th class="th-linkman" id="sth{{add @index 1}}5">{{linkman}}</th>
+                    <th class="th-tel" id="sth{{add @index 1}}6">{{tel}}</th>
+                    <th class="th-mobile" id="sth{{add @index 1}}7">{{mobile}}</th>
+                    <th class="th-overflow th-description" id="sth{{add @index 1}}8">{{description}}</th>
+                    <th class="th-overflow th-picture" id="sth{{add @index 1}}9">{{picture}}</th>
+                    <th class="th-field" id="sth{{add @index 1}}10" name="{{field}}">{{fieldname}}</th>
                 </tr>
             {{/each}}
             </tbody>
@@ -115,6 +118,16 @@
                             <label class="col-sm-2 control-label">图片</label>
                             <div class="col-sm-8" id="div-file">
                                 <input type="file" id="file-image" name="picture">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">行业</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="new-field">
+                                    {{#each fields}}
+                                        <option value="{{id}}">{{name}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
                         </div>
                     </div>

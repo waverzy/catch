@@ -19,7 +19,8 @@
     "corporation": 4,
     "coupon": 5,
     "user": 6,
-    "corprelation": 7
+    "corprelation": 7,
+    "field": 8
   },
   "test": {
     "username": "root",
@@ -45,6 +46,7 @@
     "corporation": 4,
     "coupon": 5,
     "user": 6,
-    "corprelation": 7
+    "corprelation": 7,
+    "field": 8
   }
 }

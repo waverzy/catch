@@ -15,6 +15,7 @@ var user = require('./routes/user');
 var generate = require('./routes/generate');
 var corprelation = require('./routes/corprelation');
 var partner = require('./routes/partner');
+var field = require('./routes/field');
 
 var app = express();
 
@@ -101,6 +102,7 @@ app.use('/login', login);
 app.use('/generate', generate);
 app.use('/corprelation', corprelation);
 app.use('/partner', partner);
+app.use('/field', field);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

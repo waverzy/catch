@@ -23,19 +23,25 @@ body {
   font-size:14px;
   font-family:"Microsoft YaHei";
 }
-#corporation, #coupon, #user, #corprelation {
+#corporation, #coupon, #user, #corprelation, #field {
   margin-top: 20px;
 }
-#corporation table, #coupon table, #user table {
+#corporation table, #coupon table, #user table, #field table {
   text-align: center;
   word-wrap: break-word;
   word-break: break-all;
   table-layout: fixed;
 }
-#corporation .panel-heading .group-btn, #user .panel-heading .group-btn, #corprelation .panel-heading .group-btn {
+#corporation .panel-heading .group-btn,
+#user .panel-heading .group-btn,
+#corprelation .panel-heading .group-btn,
+#field .panel-heading .group-btn {
   text-align: right;
 }
-#corporation .panel-heading .corporation-title, #user .panel-heading .user-title, #corprelation .panel-heading .corprelation-title {
+#corporation .panel-heading .corporation-title,
+#user .panel-heading .user-title,
+#corprelation .panel-heading .corprelation-title,
+#field .panel-heading .field-title {
   float:left;
   padding: 6px 12px;
 }

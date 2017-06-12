@@ -21,11 +21,15 @@ router.get('/', function(req, res) {
         return res.redirect('/login');
     }*/
     logger.info('user:[' + req.session.user + '] open corporation.html');
-    models.sequelize.query('SELECT c.code, c.name, c.state, d.address, d.linkman, d.tel, d.mobile, d.description, d.picture FROM corporations c, corpdetails d WHERE c.code=d.code', { type: models.sequelize.QueryTypes.SELECT})
+    var result = {};
+    models.sequelize.query('SELECT c.code, c.name, c.state, d.address, d.linkman, d.tel, d.mobile, d.description, d.picture, d.field, d.fieldname FROM corporations c, corpdetails d WHERE c.code=d.code', { type: models.sequelize.QueryTypes.SELECT})
         .then(function(corps) {
-            logger.info('user:[' + req.session.user + '] corporation.html initialize ');
-            return res.render('corporation', {'corps': corps, 'admin': req.session.corp==='admi'});
-        }).catch(function (error) {
+            result.corps = corps;
+            return models.Field.findAll();
+        }).then(function(fields) {
+        logger.info('user:[' + req.session.user + '] corporation.html initialize ');
+        return res.render('corporation', {'corps': result.corps, 'fields': fields, 'admin': req.session.corp==='admi'});
+    }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
         return res.render({'msg': '错误:' + error.message});
     });
@@ -84,7 +88,9 @@ router.post('/upsert', function (req, res) {
             tel: req.body.tel,
             mobile: req.body.mobile,
             description: req.body.description,
-            picture: picture
+            picture: picture,
+            field: req.body.field,
+            fieldname: req.body.fieldname
         });
     }).then(function (result) {
         // if(result[0] < 1) {
