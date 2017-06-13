@@ -59,10 +59,10 @@ app.use(function (req, res, next) {
     log.info('Process:' + process.pid + ' is processing');
     var url = req.originalUrl;
     if(req.method == "GET") {
-        if(url != "/login" && url != "/favicon.ico" && (!req.session.user || !req.session.auth)) {
+        if(url != "/login" && (!req.session.user || !req.session.auth)) {
             return res.redirect("/login");
         }
-        if(url != "/login" && url != "/favicon.ico" && req.session.auth ) {
+        if(url != "/login" && req.session.auth ) {
             var temp = config[url.substr(1)];
             if(!isNaN(temp) && req.session.auth[temp] === '1') {}
             else {
