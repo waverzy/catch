@@ -4,10 +4,11 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css"/>
     <link rel="stylesheet" href="stylesheets/style.css"/>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 <div class="container">
+    {{#unless login}}
     <ul class="nav nav-pills">
         <li role="presentation" id="menu-index">
             <a href="/index">Home</a>
@@ -22,23 +23,25 @@
             <a href="/partner">Partner</a>
         </li>
         {{#if admin}}
-        <li role="presentation" class="dropdown" id="menu-manage">
-            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Manage <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="/corporation">Corporations</a></li>
-                <li><a href="/coupon">Coupons</a></li>
-                <li><a href="/user">Users</a></li>
-                <li><a href="/corprelation">CorpRelations</a></li>
-                <li><a href="/field">Fields</a></li>
-            </ul>
-        </li>
+            <li role="presentation" class="dropdown" id="menu-manage">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" role="button" aria-haspopup="true"
+                   aria-expanded="false">
+                    Manage <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/corporation">Corporations</a></li>
+                    <li><a href="/coupon">Coupons</a></li>
+                    <li><a href="/user">Users</a></li>
+                    <li><a href="/corprelation">CorpRelations</a></li>
+                    <li><a href="/field">Fields</a></li>
+                </ul>
+            </li>
         {{/if}}
         <li role="presentation" id="menu-logout" style="display: none">
             <a href="#" id="a-logout">退出登录</a>
         </li>
     </ul>
+    {{/unless}}
     {{{body}}}
 </div>
 <script src="javascripts/lib/require.js" data-main="javascripts/main.js"></script>

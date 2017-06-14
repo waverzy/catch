@@ -10,7 +10,7 @@ var log4js = require('../core/log4jsUtil.js'),
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     logger.info('user:[' + req.ip + '] open login.html');
-    res.render('login');
+    res.render('login', {'login': true});
 });
 
 router.post('/', function (req, res) {
