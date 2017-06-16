@@ -9,6 +9,11 @@ define(['main'], function(main) {
 
     function initWidget() {
         $('#btn-login').on('click', function () {
+            if(!$('#password').val() || !$('#username').val())  {
+                $('#warning').text('请输入用户名和密码！');
+                $('#warning').show();
+                return;
+            }
             var password = $.md5($('#password').val());
             main.$.ajax({
                 type: 'post',
