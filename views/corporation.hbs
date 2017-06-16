@@ -24,6 +24,8 @@
                 <th class="th-description">介绍</th>
                 <th class="th-picture">图片</th>
                 <th class="th-field">行业</th>
+                <th class="th-expiredate">有效期至</th>
+                <th class="th-discount">折扣</th>
             </tr>
             </thead>
             <tbody>
@@ -32,16 +34,18 @@
                     <th>
                         <input type="radio" name="optionsRadios" id="sth{{add @index 1}}0" value="{{code}}">
                     </th>
-                    <th id="sth{{add @index 1}}1">{{code}}</th>
-                    <th id="sth{{add @index 1}}2">{{name}}</th>
-                    <th class="th-state" id="sth{{add @index 1}}3">{{state}}</th>
-                    <th class="th-overflow" id="sth{{add @index 1}}4">{{address}}</th>
-                    <th class="th-linkman" id="sth{{add @index 1}}5">{{linkman}}</th>
-                    <th class="th-tel" id="sth{{add @index 1}}6">{{tel}}</th>
-                    <th class="th-mobile" id="sth{{add @index 1}}7">{{mobile}}</th>
-                    <th class="th-overflow th-description" id="sth{{add @index 1}}8">{{description}}</th>
-                    <th class="th-overflow th-picture" id="sth{{add @index 1}}9">{{picture}}</th>
-                    <th class="th-field" id="sth{{add @index 1}}10" name="{{field}}">{{fieldname}}</th>
+                    <th id="sth{{add @index 1}}-1">{{code}}</th>
+                    <th id="sth{{add @index 1}}-2">{{name}}</th>
+                    <th class="th-state" id="sth{{add @index 1}}-3">{{state}}</th>
+                    <th class="th-overflow" id="sth{{add @index 1}}-4">{{address}}</th>
+                    <th class="th-linkman" id="sth{{add @index 1}}-5">{{linkman}}</th>
+                    <th class="th-tel" id="sth{{add @index 1}}-6">{{tel}}</th>
+                    <th class="th-mobile" id="sth{{add @index 1}}-7">{{mobile}}</th>
+                    <th class="th-overflow th-description" id="sth{{add @index 1}}-8">{{description}}</th>
+                    <th class="th-overflow th-picture" id="sth{{add @index 1}}-9">{{picture}}</th>
+                    <th class="th-field" id="sth{{add @index 1}}-10" name="{{field}}">{{fieldname}}</th>
+                    <th class="th-overflow th-expiredate" id="sth{{add @index 1}}-11">{{expiredate}}</th>
+                    <th class="th-overflow th-discount" id="sth{{add @index 1}}-12">{{discount}}</th>
                 </tr>
             {{/each}}
             </tbody>
@@ -128,6 +132,19 @@
                                         <option value="{{id}}">{{name}}</option>
                                     {{/each}}
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">有效期至</label>
+                            <div class="col-sm-8 input-append date form_datetime">
+                                <input class="form-control" id="new-expiredate" size="16" type="text" placeholder="选择日期" readonly>
+                                <span class="add-on"><i class="icon-th"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">折扣</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="new-discount">
                             </div>
                         </div>
                     </div>

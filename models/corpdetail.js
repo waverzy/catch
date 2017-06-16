@@ -20,7 +20,9 @@ module.exports = function(sequelize, DataTypes) {
         description: DataTypes.STRING(2000),
         picture: DataTypes.STRING,
         field: DataTypes.INTEGER,
-        fieldname: DataTypes.STRING},
+        fieldname: DataTypes.STRING,
+        expiredate: DataTypes.STRING,
+        discount: DataTypes.STRING},
         {
             charset: 'utf8',
             collate: 'utf8_general_ci'

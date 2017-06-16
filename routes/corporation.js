@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
     }*/
     logger.info('user:[' + req.session.user + '] open corporation.html');
     var result = {};
-    models.sequelize.query('SELECT c.code, c.name, c.state, d.address, d.linkman, d.tel, d.mobile, d.description, d.picture, d.field, d.fieldname FROM corporations c, corpdetails d WHERE c.code=d.code', { type: models.sequelize.QueryTypes.SELECT})
+    models.sequelize.query('SELECT c.code, c.name, c.state, d.address, d.linkman, d.tel, d.mobile, d.description, d.picture, d.field, d.fieldname, d.expiredate, d.discount FROM corporations c, corpdetails d WHERE c.code=d.code', { type: models.sequelize.QueryTypes.SELECT})
         .then(function(corps) {
             result.corps = corps;
             return models.Field.findAll();
@@ -90,7 +90,9 @@ router.post('/upsert', function (req, res) {
             description: req.body.description,
             picture: picture,
             field: req.body.field,
-            fieldname: req.body.fieldname
+            fieldname: req.body.fieldname,
+            expiredate: req.body.expiredate,
+            discount: req.body.discount
         });
     }).then(function (result) {
         // if(result[0] < 1) {

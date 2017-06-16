@@ -5,7 +5,9 @@ require.config({
     paths: {
         jquery: 'lib/jquery.min',
         bootstrap: 'lib/bootstrap.min',
-        md5: 'lib/jquery.md5'
+        md5: 'lib/jquery.md5',
+        datetimepicker: 'lib/bootstrap-datetimepicker.min',
+        datetimepickerzh: 'lib/bootstrap-datetimepicker.zh-CN'
     },
     shim : {
         bootstrap: {
@@ -13,6 +15,9 @@ require.config({
         },
         md5: {
             deps: ['jquery']
+        },
+        datetimepickerzh: {
+            deps: ['datetimepicker']
         }
     }
 });

@@ -9,7 +9,6 @@ var utils = require('../core/utils');
 var log4js = require('../core/log4jsUtil.js'),
     logger = log4js.getLogger();
 
-/* GET users listing. */
 router.get('/', function(req, res) {
     logger.info('user:[' + req.session.user + '] open coupon.html');
     var result = {};
@@ -19,7 +18,7 @@ router.get('/', function(req, res) {
             attributes: ['code', 'name']
         });
     }).then(function (corplist) {
-        logger.error('user:[' + req.session.user + '] coupon.html initialize');
+        logger.info('user:[' + req.session.user + '] coupon.html initialize');
         return res.render('coupon', {'stats': result.stats, 'corplist': corplist, 'admin': req.session.corp==='admi'});
     }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
@@ -91,6 +90,26 @@ router.post('/create', function (req, res) {
             return res.send({'msg': 'success', 'coupons': couponResults});
         }
         throw new Error('统计表更新出错！')
+    }).catch(function (error) {
+        logger.error('user:[' + req.session.user + '] ' + error.stack);
+        return res.send({'msg': '错误:' + error.message});
+    });
+});
+
+router.post('/query', function (req, res) {
+    var src = req.session.corp || '',
+        dest = req.body.dest || '';
+    if(src.length == 0 || dest.length == 0) {
+        return res.send({'msg': '状态异常，请刷新页面或重新登录！'});
+    }
+    models.Coupon.findAll({
+        where: {src: src, dest: dest}
+    }).then(function (coupons) {
+        if(coupons) {
+            logger.info('user:[' + req.session.user + '] query coupons finished');
+            return res.send({'msg': 'success', 'coupons': coupons});
+        }
+        throw new Error('不存在优惠券！')
     }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
         return res.send({'msg': '错误:' + error.message});
