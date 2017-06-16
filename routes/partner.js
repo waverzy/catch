@@ -8,7 +8,7 @@ var utils = require('../core/utils');
 var log4js = require('../core/log4jsUtil.js'),
     logger = log4js.getLogger();
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     logger.info('user:[' + req.session.user + '] open partner.html');
     models.sequelize.query('SELECT c.code, c.name, d.address, d.description, d.picture FROM corporations c, corpdetails d WHERE c.state=true AND c.code=d.code AND c.code IN (SELECT dest FROM corprelations WHERE src=?)', { replacements: [req.session.corp], type: models.sequelize.QueryTypes.SELECT})
         .then(function(corps) {
@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
             return res.render('partner', {'corps': corps, 'admin': req.session.corp==='admi'});
         }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
-        return res.render({'msg': '错误:' + error.message});
+        next(error);
     });
 });
 

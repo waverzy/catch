@@ -9,7 +9,7 @@ var utils = require('../core/utils');
 var log4js = require('../core/log4jsUtil.js'),
     logger = log4js.getLogger();
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     logger.info('user:[' + req.session.user + '] open coupon.html');
     var result = {};
     models.Couponstat.findAll().then(function (stats) {
@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
         return res.render('coupon', {'stats': result.stats, 'corplist': corplist, 'admin': req.session.corp==='admi'});
     }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
-        return res.send({'msg': '错误' + error.message});
+        next(error);
     });
 });
 

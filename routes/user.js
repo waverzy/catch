@@ -7,7 +7,7 @@ var router = express.Router();
 var log4js = require('../core/log4jsUtil.js'),
     logger = log4js.getLogger();
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     logger.info('user:[' + req.session.user + '] open user.html');
     var result = {};
     models.User.findAll().then(function(users) {
@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
         return res.render('user', {'users': result.users, 'corps': corplist, 'admin': req.session.corp==='admi'});
     }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
-        return res.send({'msg': '错误:' + error.message});
+        next(error);
     });
 });
 

@@ -19,7 +19,7 @@ var path = require("path");
 var env = process.env.NODE_ENV || "development";
 var config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     logger.info('user:[' + req.session.user + '] open generate.html');
     models.Corprelation.findAll({
         where: {
@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
         return res.render('generate', {'corplist': corplist, 'admin': req.session.corp==='admi'});
     }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
-        return res.send({'msg': '错误:' + error.message});
+        next(error);
     });
 });
 

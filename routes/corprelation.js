@@ -7,14 +7,14 @@ var router = express.Router();
 var log4js = require('../core/log4jsUtil.js'),
     logger = log4js.getLogger();
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     logger.info('user:[' + req.session.user + '] open corprelation.html');
     models.Corporation.findAll().then(function(corplist) {
         logger.info('user:[' + req.session.user + '] corprelation.html initialize');
         return res.render('corprelation', {'corps': corplist, 'admin': req.session.corp==='admi'});
     }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
-        return res.send({'msg': '错误:' + error.message});
+        next(error);
     });
 });
 

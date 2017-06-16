@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
     }
 });
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     /*if(!req.session.user) {
         return res.redirect('/login');
     }*/
@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
         return res.render('corporation', {'corps': result.corps, 'fields': fields, 'admin': req.session.corp==='admi'});
     }).catch(function (error) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
-        return res.render({'msg': '错误:' + error.message});
+        next(error);
     });
 });
 
