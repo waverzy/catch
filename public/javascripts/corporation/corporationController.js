@@ -1,4 +1,4 @@
-define(['main'], function(main) {
+define(['main', 'datetimepicker', 'datetimepickerzh'], function(main) {
     function init() {
         initMenu();
         initWidget();
@@ -20,6 +20,8 @@ define(['main'], function(main) {
             $('.th-description').toggle();
             $('.th-picture').toggle();
             $('.th-field').toggle();
+            $('.th-expiredate').toggle();
+            $('.th-discount').toggle();
         });
 
         $('.btn-edit').on('click', function() {
@@ -31,17 +33,19 @@ define(['main'], function(main) {
             $('#div-file').html('<input type="file" id="file-image" name="picture">');
             var selectedId = checkedRadio[0].id;//不能用逗号，非新定义selectedIdx
             selectedIdx = selectedId.substr(0, selectedId.length-1);
-            $('.modal-title').text($('#'+selectedIdx+1).text());
-            $('#new-code').val($('#'+selectedIdx+1).text());
-            $('#new-name').val($('#'+selectedIdx+2).text());
-            $('#new-state').val($('#'+selectedIdx+3).text());
-            $('#new-address').val($('#'+selectedIdx+4).text());
-            $('#new-linkman').val($('#'+selectedIdx+5).text());
-            $('#new-tel').val($('#'+selectedIdx+6).text());
-            $('#new-mobile').val($('#'+selectedIdx+7).text());
-            $('#new-description').val($('#'+selectedIdx+8).text());
-            $('#new-filename').val($('#'+selectedIdx+9).text());
-            $('#new-field').val($('#'+selectedIdx+10).attr('name'));
+            $('.modal-title').text($('#'+selectedIdx+'-1').text());
+            $('#new-code').val($('#'+selectedIdx+'-1').text());
+            $('#new-name').val($('#'+selectedIdx+'-2').text());
+            $('#new-state').val($('#'+selectedIdx+'-3').text());
+            $('#new-address').val($('#'+selectedIdx+'-4').text());
+            $('#new-linkman').val($('#'+selectedIdx+'-5').text());
+            $('#new-tel').val($('#'+selectedIdx+'-6').text());
+            $('#new-mobile').val($('#'+selectedIdx+'-7').text());
+            $('#new-description').val($('#'+selectedIdx+'-8').text());
+            $('#new-filename').val($('#'+selectedIdx+'-9').text());
+            $('#new-field').val($('#'+selectedIdx+'-10').attr('name'));
+            $('#new-expiredate').val($('#'+selectedIdx+'-11').text());
+            $('#new-discount').val($('#'+selectedIdx+'-12').text());
 
             $('#editModal').modal('toggle');
         });
@@ -90,8 +94,24 @@ define(['main'], function(main) {
             $('#new-mobile').val('');
             $('#new-description').val('');
             $('#new-field').val('');
+            $('#new-expiredate').val('');
+            $('#new-discount').val('');
             $('#form-code').show();
             $('#editModal').modal('toggle');
+        });
+
+        $('.form_datetime').datetimepicker({
+            minView: "month",
+            format: "yyyy-mm-dd",
+            language: 'zh-CN',
+            weekStart: 1,
+            todayBtn: true,
+            autoclose: true,
+            todayHighlight: true,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1,
+            startDate: new Date()
         });
 
     }
@@ -112,7 +132,9 @@ define(['main'], function(main) {
                 description: $('#new-description').val(),
                 picture: $('#new-filename').val(),
                 field: $('#new-field').val(),
-                fieldname: $('#new-field').find("option:selected").text()
+                fieldname: $('#new-field').find("option:selected").text(),
+                expiredate: $('#new-expiredate').val(),
+                discount: $('#new-discount').val()
             },
             success:function(output){
                 if(output.msg == 'success')
@@ -120,15 +142,17 @@ define(['main'], function(main) {
                     if(output.upsert) {
                         return window.location.reload();
                     }
-                    $('#'+selectedIdx+2).text($('#new-name').val());
-                    $('#'+selectedIdx+3).text($('#new-state').val());
-                    $('#'+selectedIdx+4).text($('#new-address').val());
-                    $('#'+selectedIdx+5).text($('#new-linkman').val());
-                    $('#'+selectedIdx+6).text($('#new-tel').val());
-                    $('#'+selectedIdx+7).text($('#new-mobile').val());
-                    $('#'+selectedIdx+8).text($('#new-description').val());
-                    $('#'+selectedIdx+9).text($('#new-filename').val());
-                    $('#'+selectedIdx+10).text($('#new-field').find("option:selected").text());
+                    $('#'+selectedIdx+'-2').text($('#new-name').val());
+                    $('#'+selectedIdx+'-3').text($('#new-state').val());
+                    $('#'+selectedIdx+'-4').text($('#new-address').val());
+                    $('#'+selectedIdx+'-5').text($('#new-linkman').val());
+                    $('#'+selectedIdx+'-6').text($('#new-tel').val());
+                    $('#'+selectedIdx+'-7').text($('#new-mobile').val());
+                    $('#'+selectedIdx+'-8').text($('#new-description').val());
+                    $('#'+selectedIdx+'-9').text($('#new-filename').val());
+                    $('#'+selectedIdx+'-10').text($('#new-field').find("option:selected").text());
+                    $('#'+selectedIdx+'-11').text($('#new-expiredate').val());
+                    $('#'+selectedIdx+'-12').text($('#new-discount').val());
                     $('#editModal').modal('toggle');
                 } else if (output.msg == 'logout') {
                     window.location.reload();
