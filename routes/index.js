@@ -41,7 +41,6 @@ router.post('/query', function (req, res) {
         where: {src: src, dest: dest}
     }).then(function (coupons) {
         if(coupons) {
-            logger.info('user:[' + req.session.user + '] query coupons finished');
             return res.send({'msg': 'success', 'coupons': coupons});
         }
         throw new Error('不存在优惠券！')
@@ -49,6 +48,32 @@ router.post('/query', function (req, res) {
         logger.error('user:[' + req.session.user + '] ' + error.stack);
         return res.send({'msg': '错误:' + error.message});
     });
+});
+
+router.post('/tip', function (req, res) {
+   var year = new Date().getFullYear(),
+       month = new Date().getMonth()+1,
+       day = new Date().getDate();
+   month = month > 9 ? month : '0'+month;
+   day = day > 9 ? day : '0'+day;
+   var today = [year, month, day].join('-');
+   models.Tip.findOne({
+       where: {
+           state: true,
+           expiredate: {
+               $gte: today
+           }
+       },
+       order: 'updatedAt DESC'
+   }).then(function (tip) {
+       if(tip) {
+           return res.send({'msg': 'success', 'tip': tip.content});
+       }
+       return res.send({'msg': 'success'});
+   }).catch(function (error) {
+       logger.error('user:[' + req.session.user + '] ' + error.stack);
+       return res.send({'msg': '错误:' + error.message});
+   });
 });
 
 module.exports = router;

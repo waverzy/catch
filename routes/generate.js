@@ -86,8 +86,16 @@ router.post('/', function (req, res) {
     var num = 1,
         len = 9;
     var couponcode = {};
-    models.Coupon.findAll({
-        attributes: ['couponno']
+    var corpinfo = {};
+    models.Corpdetail.findOne({
+        where: {
+            code: dest
+        }
+    }).then(function (detail) {
+        corpinfo = detail;
+        return models.Coupon.findAll({
+            attributes: ['couponno']
+        });
     }).then(function (numbers) {
         var goon = true;
         var couponno = {};
@@ -108,7 +116,8 @@ router.post('/', function (req, res) {
             dest: dest,
             couponcode: couponcode,
             couponno: couponno,
-            discount: '',
+            expiredate: corpinfo.expiredate,
+            discount: corpinfo.discount,
             customer: mobile,
             state: true
         };

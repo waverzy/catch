@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
             }},
         couponcode: {type: DataTypes.STRING, allowNull: false},
         couponno: DataTypes.BIGINT,//后续索引用
+        expiredate: DataTypes.STRING,
         discount: DataTypes.STRING,
         customer: DataTypes.STRING,
         state: DataTypes.BOOLEAN},

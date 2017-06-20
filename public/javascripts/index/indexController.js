@@ -6,6 +6,7 @@ define(['main'], function(main) {
         initMenu();
         initWidget();
         getCouponStat();
+        getTip();
     }
 
     function initMenu() {
@@ -81,6 +82,28 @@ define(['main'], function(main) {
                         }
                     } else {
                         $('#tb-coupons').append('<tr><th colspan="3">暂无数据，请先发放优惠券。</th><th>')
+                    }
+                } else if (output.msg == 'logout') {
+                    window.location.reload();
+                } else {
+                    alert(output.msg);
+                }
+            }
+        });
+    }
+
+    function getTip() {
+        main.$.ajax({
+            type:'post',
+            url:'/index/tip',
+            cache:false,
+            data:{},
+            success:function(output){
+                if(output.msg == 'success')
+                {
+                    if(output.tip && output.tip.length > 0) {
+                        $('.p-tip').html('<marquee id="headTip" behavior="scroll">'+output.tip+'</marquee>');
+                        $('.p-tip').show();
                     }
                 } else if (output.msg == 'logout') {
                     window.location.reload();

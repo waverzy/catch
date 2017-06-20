@@ -39,8 +39,16 @@ router.post('/create', function (req, res) {
     num = (isNaN(num)||num<=0) ? 10 : num;
     len = (isNaN(len)||len>9||len<0) ? 9 : len;
     var couponResults = [];
-    models.Coupon.findAll({
-        attributes: ['couponno']
+    var corpinfo = {};
+    models.Corpdetail.findOne({
+        where: {
+            code: dest
+        }
+    }).then(function (detail) {
+        corpinfo = detail;
+        return models.Coupon.findAll({
+            attributes: ['couponno']
+        });
     }).then(function (numbers) {
         var couponcodes = [];
         var couponnos = [];
@@ -63,7 +71,8 @@ router.post('/create', function (req, res) {
                 dest: dest,
                 couponcode: couponcodes[j],
                 couponno: couponnos[j],
-                discount: discount,
+                expiredate: corpinfo.expiredate,
+                discount: corpinfo.discount,
                 state: true
             };
             coupons.push(tempCoupon);
