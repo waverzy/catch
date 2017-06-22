@@ -61,7 +61,7 @@ router.post('/tip', function (req, res) {
        where: {
            state: true,
            expiredate: {
-               $gte: today
+               $gt: today
            }
        },
        order: 'updatedAt DESC'
