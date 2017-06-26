@@ -111,6 +111,9 @@ define(['main'], function(main) {
                         $('#fail-info').text(output.msg);
                         $('#fail-info').show();
                         $('#editModal').modal('toggle');
+                        /*$('#div-success').hide();
+                        $('#fail-info').text(output.msg);
+                        $('#div-fail').show();*/
                     }
                     $('#btn-generate').attr("disabled", false);
                 }
