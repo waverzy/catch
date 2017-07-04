@@ -20,7 +20,8 @@
     "connect-session-sequelize": "~4.1.0",
     "urllib": ">=0.5.2",
     "bluebird": "~3.5.0",
-    "multer": "~1.3.0"
+    "multer": "~1.3.0",
+    "request": "~2.81.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1"

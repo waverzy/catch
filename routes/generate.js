@@ -8,16 +8,18 @@ var utils = require('../core/utils');
 var log4js = require('../core/log4jsUtil.js'),
     logger = log4js.getLogger();
 var Promise = require('bluebird');
-var TopClient = Promise.promisifyAll(require('../core/topClient')).TopClient;
-var client = new TopClient({
-    'appkey' : '23884651' ,
-    'appsecret' : 'dcc381043b275331cd8ae1a5e0d94034' ,
-    'REST_URL' : 'http://gw.api.taobao.com/router/rest'
-});
+// var TopClient = Promise.promisifyAll(require('../core/topClient')).TopClient;
+// var client = new TopClient({
+//     'appkey' : '23884651' ,
+//     'appsecret' : 'dcc381043b275331cd8ae1a5e0d94034' ,
+//     'REST_URL' : 'http://gw.api.taobao.com/router/rest'
+// });
 var generator = require('../core/generator');
 var path = require("path");
 var env = process.env.NODE_ENV || "development";
 var config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
+var YunpianSms = Promise.promisifyAll(require('../core/yunpianSms')).YunpianSms;
+var sms = new YunpianSms();
 
 router.get('/', function(req, res, next) {
     logger.info('user:[' + req.session.user + '] open generate.html');
@@ -35,6 +37,39 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// router.post('/msg', function(req, res) {
+//     var mobile = req.body.mobile;
+//     if(!/^1(3|4|5|7|8)[0-9]\d{8}$/.test(mobile)) {
+//         logger.info('user:[' + req.session.user + '] 非法的手机号！');
+//         return res.send({'msg': '非法的手机号！'});
+//     }
+//     req.session.mobile = mobile;
+//     var num = Math.ceil(Math.random()*8999 + 1000);
+//     req.session.msgcode = num;
+//     client.execute( 'alibaba.aliqin.fc.sms.num.send' , {
+//         'extend' : '' ,
+//         'sms_type' : 'normal' ,
+//         'sms_free_sign_name' : config.sms_free_sign_name ,
+//         'sms_param' : {"msgcode": num.toString()} ,
+//         'rec_num' : mobile.toString() ,
+//         'sms_template_code' : config.validate_template
+//     }, function(error, response) {
+//         if(!error) {
+//             if(response.result.success) {
+//                 logger.info('mobile:[' + mobile + '] msgcode:[' + num + ']');
+//                 return res.send({'msg': 'success'});
+//             } else {
+//                 logger.error('user:[' + req.session.user + '] mobile:[' + mobile + '] send fail:' + response.result.msg);
+//                 return res.send({'msg': response.result.msg});
+//             }
+//         }
+//         else {
+//             logger.error('user:[' + req.session.user + '] ' + error.stack);
+//             return res.send({'msg': error.message});
+//         }
+//     });
+// });
+
 router.post('/msg', function(req, res) {
     var mobile = req.body.mobile;
     if(!/^1(3|4|5|7|8)[0-9]\d{8}$/.test(mobile)) {
@@ -44,23 +79,19 @@ router.post('/msg', function(req, res) {
     req.session.mobile = mobile;
     var num = Math.ceil(Math.random()*8999 + 1000);
     req.session.msgcode = num;
-    client.execute( 'alibaba.aliqin.fc.sms.num.send' , {
-        'extend' : '' ,
-        'sms_type' : 'normal' ,
-        'sms_free_sign_name' : config.sms_free_sign_name ,
-        'sms_param' : {"msgcode": num.toString()} ,
-        'rec_num' : mobile.toString() ,
-        'sms_template_code' : config.validate_template
-    }, function(error, response) {
+    var smsData = {};
+    smsData.mobile = mobile.toString();
+    smsData.code = num.toString();
+    sms.sendValidateMsg(smsData, function(error, response) {
         if(!error) {
-            if(response.result.success) {
+            var result = JSON.parse(response.body);
+            if(result.code == 0) {
                 logger.info('mobile:[' + mobile + '] msgcode:[' + num + ']');
                 return res.send({'msg': 'success'});
             } else {
-                logger.error('user:[' + req.session.user + '] mobile:[' + mobile + '] send fail:' + response.result.msg);
-                return res.send({'msg': response.result.msg});
+                logger.error('user:[' + req.session.user + '] mobile:[' + mobile + '] send fail:' + result.msg);
+                return res.send({'msg': result.msg});
             }
-
         }
         else {
             logger.error('user:[' + req.session.user + '] ' + error.stack);
@@ -146,16 +177,24 @@ router.post('/', function (req, res) {
         }
         throw new Error('统计表更新出错！')
     }).then(function (corpdetail) {
-        return client.executeAsync( 'alibaba.aliqin.fc.sms.num.send' , {
+        var smsData = {};
+        smsData.mobile = mobile.toString();
+        smsData.name = destname;
+        smsData.couponcode = couponcode;
+        smsData.expiredate = corpinfo.expiredate;
+        smsData.address = corpinfo.address;
+        return sms.sendCouponMsgAsync(smsData);
+        /*return client.executeAsync( 'alibaba.aliqin.fc.sms.num.send' , {
             'extend' : '' ,
             'sms_type' : 'normal' ,
             'sms_free_sign_name' : config.sms_free_sign_name ,
             'sms_param' : {"name": destname, "couponcode": couponcode} ,
             'rec_num' : mobile.toString() ,
             'sms_template_code' : config.notify_template
-        });
+        });*/
     }).then(function (response) {
-        if(response.result.success) {
+        var result = JSON.parse(response.body);
+        if(result.code == 0) {
             logger.info('mobile:[' + mobile + '] couponcode:[' + couponcode + ']');
             return res.send({'msg': 'success'});
         } else {
