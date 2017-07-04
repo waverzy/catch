@@ -13,8 +13,9 @@ function YunpianSms() {
     this.validateMsg2 = "，10分钟内输入有效。";
     this.couponMsg1 = "【执尔科技】获得";
     this.couponMsg2 = "优惠券1张，券码";
-    this.couponMsg3 = "，有效期至";
-    this.couponMsg4 = "，商家地址：";
+    this.couponMsg3 = "，享受";
+    this.couponMsg4 = "，有效期至";
+    this.couponMsg5 = "，商家地址：";
 }
 
 YunpianSms.prototype.sendValidateMsg = function (data, callback) {
@@ -38,7 +39,7 @@ YunpianSms.prototype.sendCouponMsg = function (data, callback) {
     var param = {
         'apikey': this.apikey,
         'mobile': data.mobile,
-        'text': this.couponMsg1 + data.name + this.couponMsg2 + data.couponcode + this.couponMsg3 + data.expiredate + this.couponMsg4 + data.address
+        'text': this.couponMsg1 + data.name + this.couponMsg2 + data.couponcode + this.couponMsg3 + data.discount + this.couponMsg4 + data.expiredate + this.couponMsg5 + data.address
     };
     var api_url = 'https://sms.yunpian.com/v2/sms/single_send.json';
     request.post({

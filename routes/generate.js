@@ -183,6 +183,7 @@ router.post('/', function (req, res) {
         smsData.couponcode = couponcode;
         smsData.expiredate = corpinfo.expiredate;
         smsData.address = corpinfo.address;
+        smsData.discount = corpinfo.discount;
         return sms.sendCouponMsgAsync(smsData);
         /*return client.executeAsync( 'alibaba.aliqin.fc.sms.num.send' , {
             'extend' : '' ,
