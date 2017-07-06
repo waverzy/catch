@@ -13,30 +13,30 @@
     {{#unless login}}
     <ul class="nav nav-pills">
         <li role="presentation" id="menu-index">
-            <a href="/index">Home</a>
+            <a href="/index">首页</a>
         </li>
         <li role="presentation" id="menu-check">
-            <a href="/check">Check</a>
+            <a href="/check">验证</a>
         </li>
         <li role="presentation" id="menu-generate">
-            <a href="/generate">Generate</a>
+            <a href="/generate">发放</a>
         </li>
         <li role="presentation" id="menu-partner">
-            <a href="/partner">Partner</a>
+            <a href="/partner">合作方</a>
         </li>
         {{#if admin}}
             <li role="presentation" class="dropdown" id="menu-manage">
                 <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" role="button" aria-haspopup="true"
                    aria-expanded="false">
-                    Manage <span class="caret"></span>
+                    管理 <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="/corporation">Corporations</a></li>
-                    <li><a href="/coupon">Coupons</a></li>
-                    <li><a href="/user">Users</a></li>
-                    <li><a href="/corprelation">CorpRelations</a></li>
-                    <li><a href="/field">Fields</a></li>
-                    <li><a href="/tip">Tips</a></li>
+                    <li><a href="/corporation">机构</a></li>
+                    <li><a href="/coupon">优惠券</a></li>
+                    <li><a href="/user">用户</a></li>
+                    <li><a href="/corprelation">机构合作关系</a></li>
+                    <li><a href="/field">行业</a></li>
+                    <li><a href="/tip">提示</a></li>
                 </ul>
             </li>
         {{/if}}
