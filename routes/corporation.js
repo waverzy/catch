@@ -50,8 +50,23 @@ router.post('/upload', function (req, res) {
             return res.send({'msg': err.message});
         }
         logger.info('user:[' + req.session.user + ']upload[' + req.file.filename + '] finished');
-        return res.send({'msg': 'success', 'filename': FILE_PATH + req.file.filename});
-    })
+        return models.Corpdetail.findOne({
+            where: {
+                code: req.body.code
+            }
+        }).then(function (corpdetail) {
+            if(corpdetail) {
+                return corpdetail.update({'picture': FILE_PATH + req.file.filename}, {fields: ['picture']});
+            }
+            throw new Error('机构信息不存在，无法更新图片！');
+        }).then(function () {
+            logger.info('user:[' + req.session.user + '] update picture finished ');
+            return res.send({'msg': 'success'});
+        }).catch(function (error) {
+            logger.error('user:[' + req.session.user + '] ' + error.stack);
+            return res.send({'msg': '错误:' + error.message});
+        });
+    });
 });
 
 router.post('/upsert', function (req, res) {
@@ -77,7 +92,7 @@ router.post('/upsert', function (req, res) {
         // }
         results.first = result;
         var picture = req.body.picture;
-        if(picture.indexOf(FILE_PATH) !== 0) {
+        if(picture && picture.length>0 && picture.indexOf(FILE_PATH) !== 0) {
             picture = '';
             logger.error('user:[' + req.session.user + '] 上传图片路径错误！');
         }
