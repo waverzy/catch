@@ -3,8 +3,9 @@
  */
 define(['main'], function(main) {
     function init() {
-        initMenu()
+        initMenu();
         initWidget();
+        $('.div-footer').show();
     }
 
     function initMenu() {

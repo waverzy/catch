@@ -5,6 +5,7 @@ define(['main'], function(main) {
     function init() {
         $('.nav').hide();
         initWidget();
+        $('.div-footer').show();
     }
 
     function initWidget() {

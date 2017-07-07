@@ -144,3 +144,16 @@ img {
 #div-banner {
   padding: 0;
 }
+.div-footer {
+  bottom: 10px;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  font-size: 12px;
+  font-family: "Microsoft YaHei";
+  color: #515151;
+}
+.div-footer a {
+  text-decoration: none;
+  color: #515151;
+}
