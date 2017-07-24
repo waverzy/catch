@@ -17,6 +17,7 @@ var corprelation = require('./routes/corprelation');
 var partner = require('./routes/partner');
 var field = require('./routes/field');
 var tip = require('./routes/tip');
+var apply = require('./routes/apply');
 
 var app = express();
 
@@ -60,10 +61,10 @@ app.use(function (req, res, next) {
     log.info('Process:' + process.pid + ' is processing');
     var url = req.originalUrl;
     if(req.method == "GET") {
-        if(url != "/login" && (!req.session.user || !req.session.auth)) {
+        if(url != "/login" && url != "/apply" && (!req.session.user || !req.session.auth)) {
             return res.redirect("/login");
         }
-        if(url != "/login" && req.session.auth ) {
+        if(url != "/login" && url != "/apply" && req.session.auth ) {
             var temp = config[url.substr(1)];
             if(!isNaN(temp) && req.session.auth[temp] === '1') {}
             else {
@@ -72,10 +73,10 @@ app.use(function (req, res, next) {
             }
         }
     } else {
-        if(url != "/login" && (!req.session.user || !req.session.auth)) {
+        if(url != "/login" && url != "/apply" && (!req.session.user || !req.session.auth)) {
             return res.send({'msg': 'logout'});
         }
-        if(url != "/login" && req.session.auth) {
+        if(url != "/login" && url != "/apply" && req.session.auth) {
             var secondIdx = url.indexOf('/', 1);
             var reqUrl = url.substr(1);
             if(secondIdx > 0) {
@@ -105,6 +106,7 @@ app.use('/corprelation', corprelation);
 app.use('/partner', partner);
 app.use('/field', field);
 app.use('/tip', tip);
+app.use('/apply', apply);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
