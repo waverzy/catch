@@ -16,6 +16,8 @@ function YunpianSms() {
     this.couponMsg3 = "，享受";
     this.couponMsg4 = "，有效期至";
     this.couponMsg5 = "，商家地址：";
+    this.applyMsg1 = "【执尔科技】客户信息已登记，请联系";
+    this.applyMsg2 = "，联系方式";
 }
 
 YunpianSms.prototype.sendValidateMsg = function (data, callback) {
@@ -50,6 +52,23 @@ YunpianSms.prototype.sendCouponMsg = function (data, callback) {
             return callback(err);
         }
         callback(null, response, data);
+    });
+};
+
+YunpianSms.prototype.sendApplyMsg = function (data, callback) {
+    var param = {
+        'apikey': this.apikey,
+        'mobile': gConfig.Mobile,
+        'text': this.applyMsg1 + data.name + this.applyMsg2 + data.tel
+    };
+    var api_url = 'https://sms.yunpian.com/v2/sms/single_send.json';
+    request.post({
+        url: api_url,
+        form: param
+    }, function (err, response, data) {
+        if (callback) {
+            callback(err, response, data);
+        }
     });
 };
 
