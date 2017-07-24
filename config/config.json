@@ -1,5 +1,6 @@
 {
   "development": {
+    "Mobile": "13621700",
     "username": "root",
     "password": null,
     "database": "catch",
@@ -34,6 +35,7 @@
     "dialect": "mysql"
   },
   "production": {
+    "Mobile": "13621700",
     "username": "catchuser",
     "password": "",
     "database": "catch",
