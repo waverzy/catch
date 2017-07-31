@@ -47,7 +47,7 @@ define(['main'], function(main) {
                 success: function (output) {
                     if (output.msg == 'success') {
                         alert("信息已提交，我们会尽快与您联系！");
-                        return window.location.reload();
+                        window.location.href = '/main';
                     } else {
                         $('#warning').text(output.msg);
                         $('#warning').show();
