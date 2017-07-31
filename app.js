@@ -18,6 +18,8 @@ var partner = require('./routes/partner');
 var field = require('./routes/field');
 var tip = require('./routes/tip');
 var apply = require('./routes/apply');
+var main = require('./routes/main');
+var about = require('./routes/about');
 
 var app = express();
 
@@ -57,6 +59,11 @@ var log4js = require('./core/log4jsUtil.js'),
 var env = process.env.NODE_ENV || "development";
 var config = require(path.join(__dirname, 'config', 'config.json'))[env];
 
+
+app.use('/main', main);
+app.use('/about', about);
+app.use('/', main);
+
 app.use(function (req, res, next) {
     log.info('Process:' + process.pid + ' is processing');
     var url = req.originalUrl;
@@ -94,7 +101,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', index);
 app.use('/index', index);
 app.use('/corporation', corporation);
 app.use('/coupon', coupon);
