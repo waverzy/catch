@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
     if(req.query.c && req.query.c.length >= 4) {
         var corpCode = req.query.c.substr(0, 4);
         req.session.src = corpCode;
-        models.sequelize.query('SELECT c.code, c.name, d.address, d.tel, d.description, d.discount FROM corporations c, corpdetails d WHERE c.state=true AND c.code=d.code AND c.code IN (SELECT dest FROM corprelations WHERE state=true AND src=?)', { replacements: [corpCode], type: models.sequelize.QueryTypes.SELECT})
+        models.sequelize.query('SELECT c.code, c.name, d.address, d.tel, d.description, d.discount, d.picture FROM corporations c, corpdetails d WHERE c.state=true AND c.code=d.code AND c.code IN (SELECT dest FROM corprelations WHERE state=true AND src=?)', { replacements: [corpCode], type: models.sequelize.QueryTypes.SELECT})
             .then(function(corps) {
                 if(corps && corps.length>0) {
                     logger.info('user:[' + req.ip + '] getCouponH5.html initialize ');
