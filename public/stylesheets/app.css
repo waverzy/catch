@@ -1,0 +1,23 @@
+.ipt-form {
+    position: absolute;
+    height: 30px !important;
+}
+#btn-msg {
+    float: right;
+}
+#img-numPic {
+    width: 120px;
+    height: 30px;
+    position: absolute;
+    right: 15px;
+}
+#ipt-numPic {
+    float: left;
+    position: relative;
+}
+.content-block-title-top {
+    margin-top: 15px;
+}
+.content-block-title-middle {
+    margin-top: -15px;
+}
