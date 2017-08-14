@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>执尔科技</title>
+    <link rel="stylesheet" href="stylesheets/framework7.ios.min.css">
+    <link rel="stylesheet" href="stylesheets/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="stylesheets/app.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<div class="views main-page" id="getCouponH5">
+    <div class="view view-main">
+        <div class="pages">
+            <div data-page="getCouponH5" class="page">
+                <div class="page-content">
+                    <div class="content-block-title content-block-title-top">选择需要的优惠</div>
+                    <div class="list-block media-list">
+                        <ul>
+                            {{#each corps}}
+                            <li>
+                                <label class="label-radio item-content">
+                                    <input type="radio" name="my-radio" id="{{code}}">
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">{{name}}</div>
+                                            <div class="item-after">{{tel}}</div>
+                                        </div>
+                                        <div class="item-subtitle">优惠：{{discount}}</div>
+                                        <div class="item-text">介绍：{{description}}</div>
+                                        <div class="item-text">地址：{{address}}</div>
+                                    </div>
+                                </label>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="content-block-title content-block-title-middle">填写手机号获取优惠码</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <input id="ipt-mobile" type="text" placeholder="您的手机号码" maxlength="11">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <input id="ipt-numPic" class="ipt-form" type="text" placeholder="图片验证码">
+                                            <div id="img-numPic"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <input id="ipt-msg" class="ipt-form" type="text" placeholder="短信验证码">
+                                            <a href="#" class="button" id="btn-msg">获取短信验证码</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block-title content-block-title-middle"></div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <a id="btn-submit" href="#" class="button button-big active">获取优惠码</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="javascripts/lib/framework7.min.js"></script>
+<script src="javascripts/lib/require.js" data-main="javascripts/h5/main.js"></script>
+</body>
+</html>
