@@ -20,6 +20,8 @@ var tip = require('./routes/tip');
 var apply = require('./routes/apply');
 var main = require('./routes/main');
 var about = require('./routes/about');
+var getCouponH5 = require('./routes/getCouponH5');
+var public = require('./routes/public');
 
 var app = express();
 
@@ -59,7 +61,7 @@ var log4js = require('./core/log4jsUtil.js'),
 var env = process.env.NODE_ENV || "development";
 var config = require(path.join(__dirname, 'config', 'config.json'))[env];
 
-
+app.use('/getCouponH5', getCouponH5);
 app.use('/main', main);
 app.use('/about', about);
 app.use('/', main);
@@ -67,11 +69,15 @@ app.use('/', main);
 app.use(function (req, res, next) {
     log.info('Process:' + process.pid + ' is processing');
     var url = req.originalUrl;
+    if(url == "/login" || url == "/apply" || url.indexOf("public")>0 || url == "/favicon.ico") {
+        next();
+        return;
+    }
     if(req.method == "GET") {
-        if(url != "/login" && url != "/apply" && (!req.session.user || !req.session.auth)) {
+        if(!req.session.user || !req.session.auth) {
             return res.redirect("/login");
         }
-        if(url != "/login" && url != "/apply" && req.session.auth ) {
+        if(req.session.auth ) {
             var temp = config[url.substr(1)];
             if(!isNaN(temp) && req.session.auth[temp] === '1') {}
             else {
@@ -80,10 +86,10 @@ app.use(function (req, res, next) {
             }
         }
     } else {
-        if(url != "/login" && url != "/apply" && (!req.session.user || !req.session.auth)) {
+        if(!req.session.user || !req.session.auth) {
             return res.send({'msg': 'logout'});
         }
-        if(url != "/login" && url != "/apply" && req.session.auth) {
+        if(req.session.auth) {
             var secondIdx = url.indexOf('/', 1);
             var reqUrl = url.substr(1);
             if(secondIdx > 0) {
@@ -113,6 +119,9 @@ app.use('/partner', partner);
 app.use('/field', field);
 app.use('/tip', tip);
 app.use('/apply', apply);
+app.use('/public', public);
+app.use('/getCouponH5', getCouponH5);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
