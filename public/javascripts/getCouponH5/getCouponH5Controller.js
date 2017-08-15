@@ -127,7 +127,6 @@ define(['main'], function(main) {
                                 '<p>赶紧前去商家吧！完成优惠码验证即有机会获得乐高积木一份。</p></div></div></div>' +
                                 '</div></div>';
                             main.mainView.router.loadContent(newPageContent);
-                            window.location.replace('/getCouponH5');
                         });
                     } else {
                         main.f7.alert(output.msg, "提示");
