@@ -108,8 +108,15 @@ define(['main'], function(main) {
                 },
                 success: function (output) {
                     if (output.msg == 'success') {
-                        main.f7.alert("优惠码已通过短信发送至您的手机，前往优惠商家完成验证即有机会获得乐高积木一套。", "恭喜!", function () {
-                            window.location.reload();
+                        main.f7.alert("优惠码已通过短信发送至您的手机，请注意查收。", "恭喜!", function () {
+                            var newPageContent = '<div class="page" data-page="getCouponH5">' +
+                                '<div class="page-content">' +
+                                '<div class="card demo-card-header-pic" style="width: 300px; margin: 50px auto">' +
+                                '<div style="background-image:url(images/coupontip.jpg); background-size: cover; height: 140px; width: 300px;" valign="bottom" class="card-header color-white no-border"></div>' +
+                                '<div class="card-content"><div class="card-content-inner">' +
+                                '<p>赶紧前去商家吧！完成优惠码验证即有机会获得乐高积木一份。</p></div></div></div>' +
+                                '</div></div>';
+                            main.mainView.router.loadContent(newPageContent);
                             window.location.replace('/getCouponH5');
                         });
                     } else {
