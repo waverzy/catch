@@ -50,15 +50,15 @@ define(['main'], function(main) {
                     "background" : "#CCCCCC"
                 });
             };
-            // handleCount();
+            handleCount();
             var startCountDown = window.setInterval(function() {
                 handleCount();
             }, 1000);
             // 60 秒之后清除计时器
-            var clearCountDown = setTimeout(function() {
-                $('#btn-msg').text("获取验证码");
+            var clearCountDown = setTimeout(function () {
+                $('#btn-msg').text("获取短信验证码");
                 $('#btn-msg').attr("style", {
-                    "background" : "none"
+                    "background": "none"
                 });
                 $('#btn-msg').attr("disabled", false);
                 window.clearInterval(startCountDown);
@@ -74,12 +74,22 @@ define(['main'], function(main) {
                 },
                 success: function (output) {
                     if (output.msg != 'success') {
+                        $('#btn-msg').text("获取短信验证码");
+                        $('#btn-msg').attr("style", {
+                            "background": "none"
+                        });
+                        $('#btn-msg').attr("disabled", false);
                         clearInterval(startCountDown); // 清除定时器
                         clearTimeout(clearCountDown);
                         return main.f7.alert(output.msg, "提示");
                     }
                 },
                 error: function () {
+                    $('#btn-msg').text("获取短信验证码");
+                    $('#btn-msg').attr("style", {
+                        "background": "none"
+                    });
+                    $('#btn-msg').attr("disabled", false);
                     clearInterval(startCountDown); // 清除定时器
                     clearTimeout(clearCountDown);
                     main.f7.alert("网络异常，请稍后再试！", "提示");
